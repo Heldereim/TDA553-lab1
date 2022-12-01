@@ -85,11 +85,11 @@ public class Car implements Movable {
     }
 
     private void incrementSpeed(double amount) { //Increse movementspeed of the car
-        this.setCurrentSpeed((Math.min(getCurrentSpeed() + speedFactor() * amount, this.getEnginePower())));
+        this.currentSpeed = (Math.min(getCurrentSpeed() + speedFactor() * amount, this.getEnginePower()));
     }
 
     private void decrementSpeed(double amount) { // Lowers the speed of the car, using the highest value when 
-         this.setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount, 0)); // comparing getCurrentSpeed() - speedFactor() * amount with 0
+         this.currentSpeed = (Math.max(getCurrentSpeed() - speedFactor() * amount, 0)); // comparing getCurrentSpeed() - speedFactor() * amount with 0
     }
 
     public void gas(double var1) {
@@ -116,12 +116,12 @@ public class Car implements Movable {
 
     public void turnLeft() {
         int dirValue = this.direction.getValue();
-        this.direction = Direction.values()[((dirValue - 1) % 4)];
+        this.direction = Direction.values()[Math.floorMod(dirValue-1, 4)];
     }
 
     public void turnRight() {
         int dirValue = this.direction.getValue();
-        this.direction = Direction.values()[(dirValue + 1) % 4];
+        this.direction = Direction.values()[Math.floorMod(dirValue + 1, 4)];
     }
     
     //Moves the car in the current direction
