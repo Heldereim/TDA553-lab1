@@ -11,4 +11,7 @@ public class TurboEngine extends Engine{
     public void turnOffTurbo(){
         this.turboOn = false;
     }
+    public boolean isTurboOn(){
+        return this.turboOn;
+    }
 }
