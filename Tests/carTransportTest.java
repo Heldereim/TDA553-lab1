@@ -25,7 +25,7 @@ public class carTransportTest {
         CarTransporter carTransporter = new CarTransporter(2);
         Volvo240 volvo = new Volvo240();
         MotorisedVehicle<Engine, Body> myVehic = new MotorisedVehicle<Engine,Body>(new Engine(100), new Body("Test", Color.white, 4));
-        Saab95 mySaab95 = new Saab95(new TurboEngine(100.0), new Body("Saab95", Color.red, 4));
+        Saab95<TurboEngine, Body> mySaab95 = new Saab95(new TurboEngine(100.0), new Body("Saab95", Color.red, 4));
 
 
         carTransporter.load(mySaab95);

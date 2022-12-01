@@ -1,17 +1,17 @@
 import java.awt.*;
 import java.lang.Math;
 
-public abstract class MotorisedVehicle<TEngine extends Engine, TBody extends Body> implements Movable {
+public abstract class MotorisedVehicle<E extends Engine, B extends Body> implements Movable {
 
-    private TEngine engine;
-    private TBody body;
+    private E engine;
+    private B body;
     private double currentSpeed;
 
     private double x, y; // Coordinates
 
     private Direction direction; // Current direction
 
-    public MotorisedVehicle(TEngine engine, TBody body) {
+    public MotorisedVehicle(E engine, B body) {
         this.engine = engine;
         this.body = body;
         this.stopEngine();
@@ -50,11 +50,11 @@ public abstract class MotorisedVehicle<TEngine extends Engine, TBody extends Bod
         return this.body.getColor();
     }
 
-    public TBody getBody(){
+    public B getBody(){
         return this.body;
     }
 
-    public TEngine getEngine(){
+    public E getEngine(){
         return this.engine;
     }
 
