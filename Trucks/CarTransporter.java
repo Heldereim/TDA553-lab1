@@ -1,10 +1,10 @@
 import java.awt.*;
 import java.util.Stack;
 
-public abstract class CarTransporter extends MotorisedVehicle<Engine, Body> {
+public class CarTransporter extends MotorisedVehicle<Engine, Body> {
 
     private CarPlatform carPlatform;
-    private Stack<MotorisedVehicle<Engine,Body>> loadedVehicles;
+    private Stack<MotorisedVehicle> loadedVehicles;
     private int maxCapacity;
 
     public CarTransporter(int maxCapacity) {
@@ -13,7 +13,7 @@ public abstract class CarTransporter extends MotorisedVehicle<Engine, Body> {
         this.maxCapacity = maxCapacity;
     }
 
-    public void load(MotorisedVehicle<Engine, Body> car) {
+    public void load(MotorisedVehicle car) {
         if (car != this) {
             this.tryToLoad(car);
         } else {
@@ -44,7 +44,7 @@ public abstract class CarTransporter extends MotorisedVehicle<Engine, Body> {
         }
     }
 
-    private void tryToLoad(MotorisedVehicle<Engine, Body> car) {
+    private void tryToLoad(MotorisedVehicle car) {
         if (this.loadedVehicles.size() < this.maxCapacity) {
             this.loadedVehicles.push(car);
         } else {
