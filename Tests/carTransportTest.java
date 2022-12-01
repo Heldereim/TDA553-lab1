@@ -33,5 +33,16 @@ public class carTransportTest {
         //assetEquals()
     }
 
+    @Test
+    public void moveCarTransport() {
+        CarTransporter carTransporter = new CarTransporter(2);
+        Saab95 mySaab95 = new Saab95(new TurboEngine(100.0), new Body("Saab95", Color.red, 4));
+
+
+        carTransporter.load(mySaab95);
+
+        carTransporter.
+    }
+
     
 }
