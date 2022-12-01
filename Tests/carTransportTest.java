@@ -41,7 +41,13 @@ public class carTransportTest {
 
         carTransporter.load(mySaab95);
 
-        carTransporter.
+        carTransporter.gas(0.5);
+        carTransporter.move();
+        carTransporter.turnLeft();
+        carTransporter.move();
+
+        assertEquals(carTransporter.getX(), mySaab95.getX());
+
     }
 
     
