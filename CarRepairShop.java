@@ -42,7 +42,6 @@ public class CarRepairShop {
 
     //-------------------Repairshop misc-------------------------
 
-
     public void load(MotorisedVehicle<Engine, Body> car) {
         this.AssertInRange(car);
         this.tryToLoad(car);
@@ -66,7 +65,7 @@ public class CarRepairShop {
 
     private void AssertCapacityLeft (CarTransporter transCar, int amountToLoad) throws IllegalArgumentException {
         if (amountToLoad > this.maxCapacity - this.repairshopGarage.size()) {
-            throw new IllegalArgumentException("Can't unload that many vehicles into garage."); // TODO hantera om de vill lasta av mer än möjligt
+            throw new IllegalArgumentException("Can't unload that many vehicles into garage."); 
         }
     }
 

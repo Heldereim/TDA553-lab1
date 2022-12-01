@@ -27,7 +27,7 @@ public class ScaniaTest {
     }
 
     @Test
-    public void testMovement(){
+    public void testPlatformWhileMoving(){
         Scania testScania = new Scania();
         testScania.gas(0.7);
         assertEquals(1.05, testScania.getCurrentSpeed(), 0.001);

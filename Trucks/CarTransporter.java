@@ -22,7 +22,7 @@ public class CarTransporter extends MotorisedVehicle<Engine, Body> {
     }
 
     public MotorisedVehicle<Engine, Body> unload() {
-            return this.loadedVehicles.pop(); // Will throw exception if loadedVehicles is empty
+        return this.loadedVehicles.pop(); // Will throw exception if loadedVehicles is empty
     }
 
     public void raisePlatform() {
@@ -30,7 +30,7 @@ public class CarTransporter extends MotorisedVehicle<Engine, Body> {
     }
 
     public void lowerPlatform() {
-        if (this.getCurrentSpeed() != 0) this.carPlatform.lowerPlatform();
+        if (this.getCurrentSpeed() == 0) this.carPlatform.lowerPlatform();
     }
 
     @Override
@@ -43,11 +43,6 @@ public class CarTransporter extends MotorisedVehicle<Engine, Body> {
             }
         }
     }
-// for(MotorisedVehicle m : loadedVehicles) { // TODO Switch stack for ArrayList?
-//     m.setXPos = this.getXPos;
-//     m.setYPos = this.getYPos;
-
-// }
 
     private void tryToLoad(MotorisedVehicle<Engine, Body> car) {
         if (this.loadedVehicles.size() < this.maxCapacity) {
@@ -55,5 +50,9 @@ public class CarTransporter extends MotorisedVehicle<Engine, Body> {
         } else {
             throw new IllegalArgumentException("Car Transporter already at full capacity");
         }
+    }
+
+    public boolean isPlatformDown() {
+        return this.carPlatform.isPlatformDown();
     }
 }

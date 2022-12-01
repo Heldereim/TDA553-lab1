@@ -1,7 +1,5 @@
 // Old test class
 
-// TODO Watt solves
-
 // import static org.junit.Assert.assertEquals;
 
 // import java.awt.Color;
