@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Volvo240 extends MotorisedVehicle<Engine, TrimBody> {
+public class Volvo240 extends Car<Engine, TrimBody> {
 
     
     public Volvo240(){

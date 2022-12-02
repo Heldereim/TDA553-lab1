@@ -11,6 +11,7 @@ public class CarTransporter extends MotorisedVehicle<Engine, Body> {
         super(new Engine(120), new Body("Transporter", Color.black, 2));
         this.carPlatform = new CarPlatform();
         this.maxCapacity = maxCapacity;
+        this.loadedVehicles = new Stack<LoadableVehicle>();
     }
 
     public void load(LoadableVehicle car) {
@@ -37,7 +38,7 @@ public class CarTransporter extends MotorisedVehicle<Engine, Body> {
     public void move() {
         if (!this.carPlatform.isPlatformDown()) {
             super.move();
-            for (int i = 0; i < loadedVehicles.size() - 1; i++) { // Update positions of loaded vehicles
+            for (int i = 0; i < loadedVehicles.size(); i++) { // Update positions of loaded vehicles
                 loadedVehicles.get(i).setX(this.getX());
                 loadedVehicles.get(i).setY(this.getY());
             }
@@ -45,6 +46,7 @@ public class CarTransporter extends MotorisedVehicle<Engine, Body> {
     }
 
     private void tryToLoad(LoadableVehicle car) {
+
         if (this.loadedVehicles.size() < this.maxCapacity) {
             this.loadedVehicles.push(car);
         } else {
@@ -54,5 +56,9 @@ public class CarTransporter extends MotorisedVehicle<Engine, Body> {
 
     public boolean isPlatformDown() {
         return this.carPlatform.isPlatformDown();
+    }
+
+    public LoadableVehicle lookTopCar(){
+        return this.loadedVehicles.peek();
     }
 }

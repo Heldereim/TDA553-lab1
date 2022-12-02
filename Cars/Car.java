@@ -3,8 +3,13 @@ public abstract class Car<E extends Engine, B extends Body> extends MotorisedVeh
         super(engine, body);
     }
 
-    // @Override
-    // public E getEngine() {
-    //     return this.getEngine();
-    // }
+    @Override
+    public E getEngine(){
+        return this.getEngine();
+    }
+
+    @Override
+    public B getBody(){
+        return this.getBody();
+    }
 }

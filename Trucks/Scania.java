@@ -19,17 +19,17 @@ public class Scania extends MotorisedVehicle<Engine, Body>{
          this.tipPlatform.raisePlatform(degrees);
       }
       else{
-         System.out.println("Cannot raise the platform while in movement!");
+         throw new IllegalArgumentException("Cannot raise platform while moving!");
       }
    }
 
-    public void lowerPlatform(int degrees) {
-         this.tipPlatform.lowerPlatform(degrees);
-    }
+   public void lowerPlatform(int degrees) {
+      this.tipPlatform.lowerPlatform(degrees);
+   }
 
-    @Override
-    public void move() {
-        if (this.tipPlatform.isPlatformDown()) super.move();
-    }
+   @Override
+   public void move() {
+     if (this.tipPlatform.isPlatformDown()) super.move();
+   }
 
 }

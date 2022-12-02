@@ -24,6 +24,8 @@ public class ScaniaTest {
         assertEquals(20, testScania.getPlatformAngle());
         testScania.lowerPlatform(10);
         assertEquals(10, testScania.getPlatformAngle());
+        testScania.lowerPlatform(30);
+        assertEquals(0, testScania.getPlatformAngle());
     }
 
     @Test

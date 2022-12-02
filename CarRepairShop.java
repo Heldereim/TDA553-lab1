@@ -43,22 +43,22 @@ public class CarRepairShop {
     //-------------------Repairshop misc-------------------------
 
     public void load(LoadableVehicle car) {
-        this.AssertInRange(car);
+        this.AssertInRange(car.getX(), car.getY());
         this.tryToLoad(car);
     }
 
     public void carTransfer(CarTransporter transCar, int amountToLoad) {
         
         this.AssertCapacityLeft(transCar, amountToLoad);
-        this.AssertInRange(transCar);
+        this.AssertInRange(transCar.getX(), transCar.getY());
 
         for (int i = 0; i < amountToLoad; i++) {
             this.repairshopGarage.add(transCar.unload());
         }
     }
 
-    private void AssertInRange (LoadableVehicle transCar) throws IllegalArgumentException {
-        if (this.getDistance(transCar) > this.LOAD_RANGE) {
+    private void AssertInRange (double x, double y) throws IllegalArgumentException {
+        if (this.getDistance(x, y) > this.LOAD_RANGE) {
             throw new IllegalArgumentException("Too far away from repair shop to transfer.");
         }
     }
@@ -70,7 +70,7 @@ public class CarRepairShop {
     }
 
     public void carTransfer(CarTransporter transCar) {
-        this.AssertInRange(transCar);
+        this.AssertInRange(transCar.getX(), transCar.getY());
 
         
         if (!this.isFull()) {
@@ -80,7 +80,7 @@ public class CarRepairShop {
         }
     }
 
-    public void unload(MotorisedVehicle<Engine, Body> car) {
+    public void unload(LoadableVehicle car) {
         this.repairshopGarage.remove(car);
         this.carToRepairShopPos(car);
     }
@@ -102,13 +102,13 @@ public class CarRepairShop {
         return "CarRepairShop [repairshopGarage=" + repairshopGarage + "]";
     }
 
-    private void carToRepairShopPos(MotorisedVehicle<Engine, Body> car) {
+    private void carToRepairShopPos(LoadableVehicle car) {
         car.setX(this.x);
         car.setY(this.y);
     }
     
-    public double getDistance(LoadableVehicle loadAble) {
-        return Math.sqrt((Math.pow((this.x - loadAble.getX()), 2)) + Math.pow((this.y - loadAble.getY()), 2));
+    public double getDistance(double x, double y) {
+        return Math.sqrt((Math.pow((this.x - x), 2)) + Math.pow((this.y - y), 2));
     }
 
 }

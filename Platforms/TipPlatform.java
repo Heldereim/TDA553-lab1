@@ -27,28 +27,26 @@ public class TipPlatform {
 
     
     public void lowerPlatform(int degrees) {
-        if (degrees < 0) {                              // Only want positive integers, otherwise it will be -(-degrees) = + so it
-                                                        // increases instead of decreasing!
+        if (degrees < 0) { // Negative inputs throw an error (cannot lower a negative amount)
             throw new ArithmeticException("Error! Can only input a positive integer");
 
         } else if (this.getPlatformAngle() - degrees >= MINPLATFORMANGLE) { // Checking if we can lower n without ending up below 0
             this.platformAngle -= degrees;                                  // If it is possible to lower n, do it!
 
-        } else { // Otherwise, throw error message
-            throw new ArithmeticException("You can not lower that much! You can not lower more than" /*+ this.getPlatformAngle()*/ );
+        } else { // Otherwise, set at minimum value
+            this.platformAngle = MINPLATFORMANGLE;
         }
     }
 
     public void raisePlatform(int degrees) {
-        if (degrees < 0) {
+        if (degrees < 0) { // Negative inputs throw an error (cannot raise a negative amount)
             throw new ArithmeticException("Error! Can only input a positive integer");
 
         } else if (this.getPlatformAngle() + degrees <= MAXPLATFORMANGLE) { // Check if we can raise n without ending up above 70
             this.platformAngle += degrees;                                  // If it can raise n, do it!
 
-        } else { // Otherwise, throw error message
-            throw new ArithmeticException(
-                "You cannot raise the platform more than " + (MAXPLATFORMANGLE - this.getPlatformAngle()) + "°");
+        } else { // Otherwise, set at max value
+            this.platformAngle = MAXPLATFORMANGLE;
         }
     }
 
