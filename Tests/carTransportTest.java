@@ -26,6 +26,8 @@ public class carTransportTest {
         Saab95 mySaab95 = new Saab95(new TurboEngine(125.0), new Body("Saab85", Color.black, 4));
         Volvo240 myVolvo = new Volvo240(new Engine(100), new TrimBody("Volvo", Color.black, 4, 1.25));
 
+        carTransporter.lowerPlatform();
+
         carTransporter.load(mySaab95);
         carTransporter.load(myVolvo);
 
@@ -38,8 +40,12 @@ public class carTransportTest {
         Saab95 mySaab95 = new Saab95(new TurboEngine(100.0), new Body("Saab95", Color.red, 4));
         Volvo240 myVolvo = new Volvo240(new Engine(100), new TrimBody("Volvo", Color.black, 4, 1.25));
 
+        carTransporter.lowerPlatform();
+
         carTransporter.load(mySaab95);
         carTransporter.load(myVolvo);
+
+        carTransporter.raisePlatform();
 
         carTransporter.gas(0.5);
         carTransporter.move();

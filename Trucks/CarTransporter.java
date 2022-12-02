@@ -15,10 +15,10 @@ public class CarTransporter extends Truck {
     }
 
     public void load(LoadableVehicle car) {
-        if (car != this) {
+        if (this.carPlatform.isPlatformDown()) {
             this.tryToLoad(car);
         } else {
-            throw new IllegalArgumentException("Cannot load yourself onto yourself");
+            throw new IllegalStateException("Cannot load if platform isn't down.");
         }
     }
 
@@ -50,7 +50,7 @@ public class CarTransporter extends Truck {
         if (this.loadedVehicles.size() < this.maxCapacity) {
             this.loadedVehicles.push(car);
         } else {
-            throw new IllegalArgumentException("Car Transporter already at full capacity");
+            throw new IllegalStateException("Car Transporter already at full capacity");
         }
     }
 
@@ -58,7 +58,16 @@ public class CarTransporter extends Truck {
         return this.carPlatform.isPlatformDown();
     }
 
-    public LoadableVehicle lookTopCar(){
+    public LoadableVehicle lookTopCar() {
         return this.loadedVehicles.peek();
+    }
+
+    @Override
+    public void gas(double amount) {
+        if(!this.isPlatformDown()) {
+            super.gas(amount);
+        } else {
+            throw new IllegalStateException("Cannot gas if ");
+        }
     }
 }

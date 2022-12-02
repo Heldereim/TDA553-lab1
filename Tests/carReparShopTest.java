@@ -26,7 +26,7 @@ public class carReparShopTest {
 
         myShop.load(testVolvo);
         myShop.load(testSaab1);
-        assertThrows(IllegalArgumentException.class, () -> myShop.load(testSaab2));
+        assertThrows(IllegalStateException.class, () -> myShop.load(testSaab2));
     }
 
     @Test
@@ -50,6 +50,6 @@ public class carReparShopTest {
         Volvo240 testVolvo = new Volvo240(new Engine(100.0), new TrimBody("Volvo", Color.black, 4, 1.25));
         CarRepairShop myShop = new CarRepairShop(10, 10, 2);
 
-        assertThrows(IllegalArgumentException.class, () -> myShop.load(testVolvo));
+        assertThrows(IllegalStateException.class, () -> myShop.load(testVolvo));
     }
 }

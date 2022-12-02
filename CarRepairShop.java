@@ -46,7 +46,6 @@ public class CarRepairShop {
     public void load(LoadableVehicle car) {
         this.AssertInRange(car.getX(), car.getY());
         this.tryToLoad(car);
-
     }
 
     public void carTransfer(CarTransporter transCar, int amountToLoad) {
@@ -61,7 +60,7 @@ public class CarRepairShop {
 
     private void AssertInRange (double x, double y) throws IllegalArgumentException {
         if (this.getDistance(x, y) > this.LOAD_RANGE) {
-            throw new IllegalArgumentException("Too far away from repair shop to transfer.");
+            throw new IllegalStateException("Too far away from repair shop to transfer.");
         }
     }
 
@@ -74,11 +73,10 @@ public class CarRepairShop {
     public void carTransfer(CarTransporter transCar) {
         this.AssertInRange(transCar.getX(), transCar.getY());
 
-        
         if (!this.isFull()) {
             this.repairshopGarage.add(transCar.unload());
         } else {
-            throw new IllegalArgumentException("Car Repair Shop already at full capacity");
+            throw new IllegalStateException("Car Repair Shop already at full capacity");
         }
     }
 
@@ -89,10 +87,10 @@ public class CarRepairShop {
 
     private void tryToLoad(LoadableVehicle car) {
     if (!this.isFull()) {
-        this.repairshopGarage.add(car);
-        this.carToRepairShopPos(car);
+            this.repairshopGarage.add(car);
+            this.carToRepairShopPos(car);
         } else {
-        throw new IllegalArgumentException("Car Repair Shop already at full capacity");
+            throw new IllegalStateException("Car Repair Shop already at full capacity");
         }
     }
     

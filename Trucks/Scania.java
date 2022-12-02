@@ -19,7 +19,7 @@ public class Scania extends Truck{
          this.tipPlatform.raisePlatform(degrees);
       }
       else{
-         throw new IllegalArgumentException("Cannot raise platform while moving!");
+         throw new IllegalStateException("Cannot raise platform while moving!");
       }
    }
 
@@ -32,7 +32,7 @@ public class Scania extends Truck{
       if(this.tipPlatform.getPlatformAngle() == 0){
          super.gas(amount);}
       else {
-         throw new IllegalArgumentException("You may not move while platform is raised!");
+         throw new IllegalStateException("You may not move while platform is raised!");
       }
    }
 }
