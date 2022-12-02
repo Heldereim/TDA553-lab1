@@ -31,7 +31,11 @@ the added benefit of being able to be more detailed via polymorphism. We did, ho
 stuff (more specifically the engine and the body) in MotorisedVehicle and made subtypes of those and
 made
 
-nånting nånting parametriserad polymorphism :)
+We chose to work with parametriserad polymorphism and it looked at first to be able to solve some problems we had. The problem we had at first where that we wantet a sleak way to implement the differense
+with the normal engine and turbo engine (the same with body and trim body) and its implementation in the vehicle. 
+But proved to be a bit more challenging than we expected. Resulting in problems with ex the load-method in carTransport 
+and the parameters there. We solved it with having a marker interface called "loadableVehicle" to be able to mark what 
+vehicles to load, which was inherited by the Car class and not the Truck class to be able to load Cars but not Trucks.
 
 
 3. Did you need to modify the design from lab 1 in order to make these extensions? If so, how could you have noticed that 
