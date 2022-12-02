@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.Stack;
 
-public class CarTransporter extends MotorisedVehicle<Engine, Body> {
+public class CarTransporter extends Truck {
 
     private CarPlatform carPlatform;
     private Stack<LoadableVehicle> loadedVehicles;

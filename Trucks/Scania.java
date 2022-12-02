@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Scania extends MotorisedVehicle<Engine, Body>{
+public class Scania extends Truck{
     
    private TipPlatform tipPlatform;
 

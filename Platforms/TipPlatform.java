@@ -27,7 +27,8 @@ public class TipPlatform {
 
     
     public void lowerPlatform(int degrees) {
-        if (degrees < 0) { // Negative inputs throw an error (cannot lower a negative amount)
+        if (degrees < 0) {                              // Only want positive integers, otherwise it will be -(-degrees) = + so it
+                                                        // increases instead of decreasing!
             throw new ArithmeticException("Error! Can only input a positive integer");
 
         } else if (this.getPlatformAngle() - degrees >= MINPLATFORMANGLE) { // Checking if we can lower n without ending up below 0

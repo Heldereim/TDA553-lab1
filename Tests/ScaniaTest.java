@@ -1,4 +1,6 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
+
 import java.awt.*;
 
 import org.junit.Test;
@@ -33,8 +35,8 @@ public class ScaniaTest {
         Scania testScania = new Scania();
         testScania.gas(0.7);
         assertEquals(1.05, testScania.getCurrentSpeed(), 0.001);
-        testScania.raisePlatform(20);
-        assertEquals(0, testScania.getPlatformAngle());
+        
+        assertThrows(IllegalArgumentException.class, testScania.raisePlatform(20));
         testScania.move();
         assertEquals(1.05, testScania.getY(), 0.001);
         testScania.turnLeft();
