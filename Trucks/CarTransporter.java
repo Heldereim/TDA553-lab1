@@ -4,7 +4,7 @@ import java.util.Stack;
 public class CarTransporter extends MotorisedVehicle<Engine, Body> {
 
     private CarPlatform carPlatform;
-    private Stack<MotorisedVehicle> loadedVehicles;
+    private Stack<LoadableVehicle> loadedVehicles;
     private int maxCapacity;
 
     public CarTransporter(int maxCapacity) {
@@ -13,7 +13,7 @@ public class CarTransporter extends MotorisedVehicle<Engine, Body> {
         this.maxCapacity = maxCapacity;
     }
 
-    public void load(MotorisedVehicle car) {
+    public void load(LoadableVehicle car) {
         if (car != this) {
             this.tryToLoad(car);
         } else {
@@ -21,7 +21,7 @@ public class CarTransporter extends MotorisedVehicle<Engine, Body> {
         }
     }
 
-    public MotorisedVehicle<Engine, Body> unload() {
+    public LoadableVehicle unload() {
         return this.loadedVehicles.pop(); // Will throw exception if loadedVehicles is empty
     }
 
@@ -44,7 +44,7 @@ public class CarTransporter extends MotorisedVehicle<Engine, Body> {
         }
     }
 
-    private void tryToLoad(MotorisedVehicle car) {
+    private void tryToLoad(LoadableVehicle car) {
         if (this.loadedVehicles.size() < this.maxCapacity) {
             this.loadedVehicles.push(car);
         } else {

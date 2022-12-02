@@ -23,10 +23,7 @@ public class carTransportTest {
     @Test
     public void loadCarTest() {
         CarTransporter carTransporter = new CarTransporter(2);
-        Volvo240 volvo = new Volvo240();
-        MotorisedVehicle<Engine, Body> myVehic = new MotorisedVehicle<Engine,Body>(new Engine(100), new Body("Test", Color.white, 4));
-        Saab95<TurboEngine, Body> mySaab95 = new Saab95(new TurboEngine(100.0), new Body("Saab95", Color.red, 4));
-
+        Saab95 mySaab95 = new Saab95(new TurboEngine(125.0), new Body("Saab85", Color.black, 4));
 
         carTransporter.load(mySaab95);
 
@@ -46,7 +43,7 @@ public class carTransportTest {
         carTransporter.turnLeft();
         carTransporter.move();
 
-        assertEquals(carTransporter., mySaab95.getX(), 0.001);
+        assertEquals(carTransporter.getX(), mySaab95.getX(), 0.001);
 
     }
 

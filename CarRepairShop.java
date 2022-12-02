@@ -8,7 +8,7 @@ public class CarRepairShop {
 
     private final double LOAD_RANGE = 5.0;
 
-    private ArrayList<MotorisedVehicle<Engine, Body>> repairshopGarage;
+    private ArrayList<LoadableVehicle> repairshopGarage;
 
     public CarRepairShop(double x, double y, int maxCapacity) { 
         this.x = x;
@@ -57,7 +57,7 @@ public class CarRepairShop {
         }
     }
 
-    private void AssertInRange (MotorisedVehicle<Engine, Body> transCar) throws IllegalArgumentException {
+    private void AssertInRange (LoadableVehicle transCar) throws IllegalArgumentException {
         if (transCar.getDistance(this.x, this.y) > this.LOAD_RANGE) {
             throw new IllegalArgumentException("Too far away from repair shop to transfer.");
         }
@@ -70,9 +70,8 @@ public class CarRepairShop {
     }
 
     public void carTransfer(CarTransporter transCar) {
-        if (transCar.getDistance(this.x, this.y) > this.LOAD_RANGE) {
-            throw new IllegalArgumentException("Too far away from repair shop to transfer.");
-        }
+        this.AssertInRange(transCar);
+
         
         if (!this.isFull()) {
             this.repairshopGarage.add(transCar.unload());
@@ -108,4 +107,8 @@ public class CarRepairShop {
         car.setY(this.y);
     }
     
+    public double getDistance(double x, double y) {
+        return Math.sqrt((Math.pow((x - this.x), 2)) + Math.pow((y - this.y), 2));
+    }
+
 }
