@@ -37,4 +37,6 @@ nånting nånting parametriserad polymorphism :)
 3. Did you need to modify the design from lab 1 in order to make these extensions? If so, how could you have noticed that 
 your design from Lab 1 did not follow the Open-Closed Principle before you started working on Lab 2?
 
-Yes, we noticed that the code had some flaws when different types of vehicles where 
+Yes, we noticed that the code had some flaws when different types of vehicles needed to be implemented. We also wantet to split
+the big classes into smaller by example creating a new class of body and engine that ex the Saab and the Volvo has, by delegation. Later we also created
+a big class "MotorisedVehicle" that the classes "Car" and "Truck" inherited, to get rid of code duplication. 
