@@ -19,19 +19,21 @@ other operations that the contract doesn't include to other methods.
 2. How did you handle duplicated code between Scania, the car transporters and the repair shops? Explain how you decided 
 when to use subclassing and when to use composition and delegation.
 
-Both Scania and the car transporters are subclasses of the standard MotorisedVehicle and thus they inherit the
-properties from that class. We wanted to make the platforms work via delegation as to be able to implement the 
+Both Scania and the car transporters are subclasses of the Truck superclass, the Truck is in turn a subclass of MotorisedVehicle.
+We wanted to make the platforms work via delegation as to be able to implement the 
 different types of platforms on new trucks if needed, and we considered making a supertype for all platforms, but 
-we noticed that there really wasn't any overlap between them, so we kept them separate for now as not to make things
+we noticed that there really wasn't any overlap between them (Scania platform has a degree of tipping while transporter has a boolean, raised or lowered),
+so we kept them separate for now as to not make things
 more complex for no reason.
 
 We decided to use subclassing for all the cars and trucks from our supertype MotorisedVehicle since they are 
-logical suptypes of a vehicle with a motor, and they inherit all of the things of MotorisedVehicle with
+logical subtypes of a vehicle with a motor, and they inherit all of the things of MotorisedVehicle with
 the added benefit of being able to be more detailed via polymorphism. We did, however, delegate some of the
-stuff (more specifically the engine and the body) in MotorisedVehicle and made subtypes of those and
-made
+stuff (more specifically the engine and the body) in MotorisedVehicle and made subtypes of those, specifically
+TurboEngine and TrimBody.
 
-We chose to work with parametriserad polymorphism and it looked at first to be able to solve some problems we had. The problem we had at first where that we wantet a sleak way to implement the differense
+We chose to work with parameterised polymorphism and it looked at first to be able to solve some problems we had.
+The problem we had at first where that we wantet a sleak way to implement the differense
 with the normal engine and turbo engine (the same with body and trim body) and its implementation in the vehicle. 
 But proved to be a bit more challenging than we expected. Resulting in problems with ex the load-method in carTransport 
 and the parameters there. We solved it with having a marker interface called "loadableVehicle" to be able to mark what 
