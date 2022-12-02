@@ -28,8 +28,11 @@ public class Scania extends Truck{
    }
 
    @Override
-   public void move() {
-     if (this.tipPlatform.isPlatformDown()) super.move();
+   public void gas(double amount){
+      if(this.tipPlatform.getPlatformAngle() == 0){
+         super.gas(amount);}
+      else {
+         throw new IllegalArgumentException("You may not move while platform is raised!");
+      }
    }
-
 }

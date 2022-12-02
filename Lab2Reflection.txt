@@ -2,32 +2,32 @@
 What is the contract for gas() and brake() in this type? Do the implementations of gas() and brake() in both Volvo and 
 Scania follow this contract? Does your design follow the Liskov Substitution Principle?
 
-The contract for gas sayes that gas takes an double argument, checks if its between 0 and 1. If it is, it calls upon incrementSpeed
-with that argument. Oterwise, sets the incrementSpeed to the nearest number.
+The contract for gas says that gas takes a double argument, checks if it's between 0 and 1. If it is, it calls upon incrementSpeed
+with that argument. Otherwise, sets the incrementSpeed to the nearest number.
 
-The implementation for gas is that when called upon takes a double that can be between 0 and 1. The method tests with if-statements
+The implementation of gas is that when called upon takes a double that can be between 0 and 1. The method tests with if-statements
 if the input-value is lower or higher than 0 or 1. If it is higher, the argument in the call on incrementSpeed is set to 1, if its
 lower, the argument is set to 0. But if the value is between 0 and 1 then gas calls on incrementSpeed with the same argument as the
-argument that gas got and increase the vaible currentSpeed with the argument. When move is called, it takes se speed and adds it 
+argument that gas got and increase the variable currentSpeed with the argument. When move is called, it takes the speed and adds it 
 to the x and y positions determined by the direction varible.
 
 The brake method is exactly the same, besides it calls upon decrementSpeed instead of incrementSpeed.
 
 It follows the Liskov Substitution Principle because the implementation does what the contract says and only that. It delegates all
-other operations that the contract doesen't include to other methods.
+other operations that the contract doesn't include to other methods.
 
 2. How did you handle duplicated code between Scania, the car transporters and the repair shops? Explain how you decided 
 when to use subclassing and when to use composition and delegation.
 
-Both Scania and the car transporters are subclasses of the standard Motorised Vehicle and thus they inherit the
+Both Scania and the car transporters are subclasses of the standard MotorisedVehicle and thus they inherit the
 properties from that class. We wanted to make the platforms work via delegation as to be able to implement the 
 different types of platforms on new trucks if needed, and we considered making a supertype for all platforms, but 
 we noticed that there really wasn't any overlap between them, so we kept them separate for now as not to make things
 more complex for no reason.
 
 We decided to use subclassing for all the cars and trucks from our supertype MotorisedVehicle since they are 
-logical suptypes of a Vehicle with a motor, and they inherit all of the things of MotorisedVehicle with
-the added benefit of being able to be more detailed via polymorphism. We did however delegate some of the
+logical suptypes of a vehicle with a motor, and they inherit all of the things of MotorisedVehicle with
+the added benefit of being able to be more detailed via polymorphism. We did, however, delegate some of the
 stuff (more specifically the engine and the body) in MotorisedVehicle and made subtypes of those and
 made
 
@@ -39,4 +39,8 @@ your design from Lab 1 did not follow the Open-Closed Principle before you start
 
 Yes, we noticed that the code had some flaws when different types of vehicles needed to be implemented. We also wantet to split
 the big classes into smaller by example creating a new class of body and engine that ex the Saab and the Volvo has, by delegation. Later we also created
-a big class "MotorisedVehicle" that the classes "Car" and "Truck" inherited, to get rid of code duplication. 
+a big class "MotorisedVehicle" that the classes "Car" and "Truck" inherited, to get rid of code duplication.
+
+But we have not changed that much to the functionality of the Car class. The changes we have done is that we have moved some methodes up in
+the hierarki to be able to use it in "Truck" as said earlier. The big flaw we saw with the code from lab 1 was that the code where too
+specific towards a vehicle-type of a Car, rather than a vehicle to be able to expand towards different types.

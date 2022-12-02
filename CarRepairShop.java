@@ -14,6 +14,7 @@ public class CarRepairShop {
         this.x = x;
         this.y = y;
         this.maxCapacity = maxCapacity;
+        this.repairshopGarage = new ArrayList<LoadableVehicle>();
     }
 
     //--------------------Getters---------------------------------
@@ -45,6 +46,7 @@ public class CarRepairShop {
     public void load(LoadableVehicle car) {
         this.AssertInRange(car.getX(), car.getY());
         this.tryToLoad(car);
+
     }
 
     public void carTransfer(CarTransporter transCar, int amountToLoad) {
@@ -88,6 +90,7 @@ public class CarRepairShop {
     private void tryToLoad(LoadableVehicle car) {
     if (!this.isFull()) {
         this.repairshopGarage.add(car);
+        this.carToRepairShopPos(car);
         } else {
         throw new IllegalArgumentException("Car Repair Shop already at full capacity");
         }
