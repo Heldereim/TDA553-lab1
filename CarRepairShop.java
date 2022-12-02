@@ -42,7 +42,7 @@ public class CarRepairShop {
 
     //-------------------Repairshop misc-------------------------
 
-    public void load(MotorisedVehicle<Engine, Body> car) {
+    public void load(LoadableVehicle car) {
         this.AssertInRange(car);
         this.tryToLoad(car);
     }
@@ -85,7 +85,7 @@ public class CarRepairShop {
         this.carToRepairShopPos(car);
     }
 
-    private void tryToLoad(MotorisedVehicle<Engine, Body> car) {
+    private void tryToLoad(LoadableVehicle car) {
     if (!this.isFull()) {
         this.repairshopGarage.add(car);
         } else {

@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.lang.Math;
 
-public abstract class MotorisedVehicle<E extends Engine, B extends Body> implements Movable, LoadableVehicle {
+public abstract class MotorisedVehicle<E extends Engine, B extends Body> implements Movable {
 
     private E engine;
     private B body;
