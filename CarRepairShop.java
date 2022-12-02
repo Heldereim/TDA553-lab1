@@ -58,7 +58,7 @@ public class CarRepairShop {
     }
 
     private void AssertInRange (LoadableVehicle transCar) throws IllegalArgumentException {
-        if (transCar.getDistance(this.x, this.y) > this.LOAD_RANGE) {
+        if (this.getDistance(transCar) > this.LOAD_RANGE) {
             throw new IllegalArgumentException("Too far away from repair shop to transfer.");
         }
     }
@@ -107,8 +107,8 @@ public class CarRepairShop {
         car.setY(this.y);
     }
     
-    public double getDistance(double x, double y) {
-        return Math.sqrt((Math.pow((x - this.x), 2)) + Math.pow((y - this.y), 2));
+    public double getDistance(LoadableVehicle loadAble) {
+        return Math.sqrt((Math.pow((this.x - loadAble.getX()), 2)) + Math.pow((this.y - loadAble.getY()), 2));
     }
 
 }
