@@ -159,6 +159,11 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
         }
     }
 
+    public void moveIt(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
     @Override
     public String toString() {
         return "MotorisedVehicle [engine=" + engine + ", body=" + body + ", currentSpeed=" + currentSpeed + ", x=" + x
