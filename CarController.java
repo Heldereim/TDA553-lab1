@@ -16,7 +16,7 @@ public class CarController {
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
     private final int DELAY = 50;
-    
+
     // each step between delays.
     private Timer timer = new Timer(DELAY, new TimerListener());
 
@@ -25,26 +25,25 @@ public class CarController {
     // A list of cars, modify if needed
     ArrayList<MotorisedVehicle<?, ?>> vehicles = new ArrayList<>();
 
-    //methods:
+    // methods:
 
     public static void main(String[] args) {
         // Instance of this class
-        
+
         final int INITIAL_DISTANCE = 100; // TODO MITT
-        
+
         CarController cc = new CarController();
 
-        cc.vehicles.add(new Volvo240());
-        // cc.vehicles.add(new Saab95());      // TODO MITT
-        // cc.vehicles.add(new Scania());    // TODO MITT
-        
-        int i = 0;                      // TODO MITT
-        for(MotorisedVehicle<?, ?> motorisedVehicle : cc.vehicles) { // TODO MITT
-            Point point = new Point(0, (i*INITIAL_DISTANCE)); 
-            motorisedVehicle.setCoordinates(point);        // Ökar distansen med 100 mellan varje bil i y-led
-            i++;
-        }  
+        //cc.vehicles.add(new Volvo240());
+        cc.vehicles.add(new Saab95()); // TODO MITT
+        // cc.vehicles.add(new Scania()); // TODO MITT
 
+        int i = 0; // TODO MITT
+        for (MotorisedVehicle<?, ?> motorisedVehicle : cc.vehicles) { // TODO MITT
+            Point point = new Point(0, (i * INITIAL_DISTANCE));
+            motorisedVehicle.setCoordinates(point); // Ökar distansen med 100 mellan varje bil i y-led
+            i++;
+        }
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -53,9 +52,10 @@ public class CarController {
         cc.timer.start();
     }
 
-    /* Each step the TimerListener moves all the cars in the list and tells the
-    * view to update its images. Change this method to your needs.
-    * */
+    /*
+     * Each step the TimerListener moves all the cars in the list and tells the
+     * view to update its images. Change this method to your needs.
+     */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (MotorisedVehicle<?, ?> motorisedVehicle : vehicles) {
@@ -70,54 +70,52 @@ public class CarController {
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (MotorisedVehicle<?,?> motorisedVehicle : vehicles) {
-           
+        for (MotorisedVehicle<?, ?> motorisedVehicle : vehicles) {
+
             motorisedVehicle.gas(gas);
-        
+
+        }
     }
-}
 
     public void brake(int brakeamount) {
         double brake = ((double) brakeamount) / 100;
-        for (MotorisedVehicle<?,?> motorisedVehicle : vehicles) {
-           
+        for (MotorisedVehicle<?, ?> motorisedVehicle : vehicles) {
+
             motorisedVehicle.brake(brake);
         }
     }
 
-    // public void setTurboOff() {
-    //     for (MotorisedVehicle<TurboEngine,?> motorisedVehicle : vehicles) {         
-    //         motorisedVehicle.setTurboOff();
-        
-    //     }
+    public void setTurboOff() {
+        for (MotorisedVehicle<?, ?> motorisedVehicle : vehicles) {
+            motorisedVehicle.setTurboOff();
+
+        }
+    }
+
+    public void setTurboOn() {
+        for (MotorisedVehicle<?, ?> motorisedVehicle : vehicles) {
+            motorisedVehicle.setTurboOn();
+        }
+    }
+
+    // public void raisePlatform(int liftAmount) {
+    // TipPlatform.raisePlatform(liftAmount);
     // }
 
-// public void setTurboOn() {
-//     for (MotorisedVehicle<TurboEngine, ?> motorisedVehicle : vehicles) {
-//         motorisedVehicle.setTurboOn();
-//     }
-// }
+    // public void lowerPlatform(int lowerAmount) {
+    // TipPlatform.lowerPlatform(lowerAmount);
+    // }
 
-// public void raisePlatform(int liftAmount) {
-//     TipPlatform.raisePlatform(liftAmount);
-// }
-
-// public void lowerPlatform(int lowerAmount) {
-//     TipPlatform.lowerPlatform(lowerAmount);
-// }
-
-public void startEngine() {
-    for(MotorisedVehicle<?,?> motorisedVehicle : vehicles) {
-        motorisedVehicle.startEngine();
-}}
-
-public void stopEngine() {
-    for(MotorisedVehicle<?,?> motorisedVehicle : vehicles) {
-        motorisedVehicle.stopEngine();
+    public void startEngine() {
+        for (MotorisedVehicle<?, ?> motorisedVehicle : vehicles) {
+            motorisedVehicle.startEngine();
+        }
     }
-}
 
-
-
+    public void stopEngine() {
+        for (MotorisedVehicle<?, ?> motorisedVehicle : vehicles) {
+            motorisedVehicle.stopEngine();
+        }
+    }
 
 }
