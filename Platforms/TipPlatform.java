@@ -39,8 +39,8 @@ public class TipPlatform {
         }
     }
 
-    public void raisePlatform(int degrees) {
-        if (degrees < 0) { // Negative inputs throw an error (cannot raise a negative amount)
+    public void raisePlatform (int degrees){
+        if(this.getPlatformAngle() + degrees < 0){ // Negative inputs throw an error (cannot raise a negative amount)
             throw new ArithmeticException("Error! Can only input a positive integer");
 
         } else if (this.getPlatformAngle() + degrees <= MAXPLATFORMANGLE) { // Check if we can raise n without ending up above 70

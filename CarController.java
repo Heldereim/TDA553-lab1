@@ -30,17 +30,18 @@ public class CarController {
     public static void main(String[] args) {
         // Instance of this class
         
-        final double INITIAL_DISTANCE = 100.0; // TODO MITT
+        final int INITIAL_DISTANCE = 100; // TODO MITT
         
         CarController cc = new CarController();
 
         cc.vehicles.add(new Volvo240());
-        cc.vehicles.add(new Saab95());      // TODO MITT
-        cc.vehicles.add(new Scania());    // TODO MITT
+        // cc.vehicles.add(new Saab95());      // TODO MITT
+        // cc.vehicles.add(new Scania());    // TODO MITT
         
         int i = 0;                      // TODO MITT
-        for(MotorisedVehicle<?, ?> motorisedVehicle : cc.vehicles) {
-            motorisedVehicle.moveIt(0.0 , (i*INITIAL_DISTANCE));        // Ökar distansen med 100 mellan varje bil i y-led
+        for(MotorisedVehicle<?, ?> motorisedVehicle : cc.vehicles) { // TODO MITT
+            Point point = new Point(0, (i*INITIAL_DISTANCE)); 
+            motorisedVehicle.setCoordinates(point);        // Ökar distansen med 100 mellan varje bil i y-led
             i++;
         }  
 
@@ -83,5 +84,40 @@ public void brake(int brakeamount) {
             motorisedVehicle.brake(brake);
         }
     }
+
+// public void setTurboOff() {
+//         for (MotorisedVehicle<TurboEngine,?> motorisedVehicle : vehicles) {         
+//             motorisedVehicle.setTurboOff();
+        
+//         }
+// }
+
+// public void setTurboOn() {
+//     for (MotorisedVehicle<TurboEngine, ?> motorisedVehicle : vehicles) {
+//         motorisedVehicle.setTurboOn();
+//     }
+// }
+
+// public void raisePlatform(int liftAmount) {
+//     TipPlatform.raisePlatform(liftAmount);
+// }
+
+// public void lowerPlatform(int lowerAmount) {
+//     TipPlatform.lowerPlatform(lowerAmount);
+// }
+
+public void startEngine() {
+    for(MotorisedVehicle<?,?> motorisedVehicle : vehicles) {
+        motorisedVehicle.startEngine();
+}}
+
+public void stopEngine() {
+    for(MotorisedVehicle<?,?> motorisedVehicle : vehicles) {
+        motorisedVehicle.stopEngine();
+    }
+}
+
+
+
 
 }

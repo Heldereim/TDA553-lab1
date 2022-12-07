@@ -67,7 +67,7 @@ public class CarTransporter extends Truck {
         if(!this.isPlatformDown()) {
             super.gas(amount);
         } else {
-            throw new IllegalStateException("Cannot gas if ");
+            throw new IllegalStateException("Cannot gas if platform is down");
         }
     }
 }
