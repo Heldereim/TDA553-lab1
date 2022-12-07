@@ -28,6 +28,7 @@ public class DrawPanel extends JPanel{
 
         scaniaPoint.x += (int) x;
         scaniaPoint.y += (int) y;
+        System.out.println("Hej");
     }
 
     // Initializes the panel and reads the images
