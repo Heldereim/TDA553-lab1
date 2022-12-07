@@ -154,16 +154,16 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
     public void move() {
         switch (this.direction) {
             case NORTH:
-                this.coordinates.y += this.currentSpeed;
+                this.coordinates.y += this.currentSpeed * 10;
                 break;
             case EAST:
-                this.coordinates.x += this.currentSpeed;
+                this.coordinates.x += this.currentSpeed * 10;
                 break;
             case SOUTH:
-                this.coordinates.y -= this.currentSpeed;
+                this.coordinates.y -= this.currentSpeed * 10;
                 break;
             case WEST:
-                this.coordinates.x -= this.currentSpeed;
+                this.coordinates.x -= this.currentSpeed * 10;
                 break;
         }
     }

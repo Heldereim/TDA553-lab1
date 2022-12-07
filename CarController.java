@@ -30,13 +30,13 @@ public class CarController {
     public static void main(String[] args) {
         // Instance of this class
 
-        final int INITIAL_DISTANCE = 100; // TODO MITT
+        final int INITIAL_DISTANCE = 1; // TODO MITT
 
         CarController cc = new CarController();
 
-        //cc.vehicles.add(new Volvo240());
+        cc.vehicles.add(new Volvo240());
         cc.vehicles.add(new Saab95()); // TODO MITT
-        // cc.vehicles.add(new Scania()); // TODO MITT
+        cc.vehicles.add(new Scania()); // TODO MITT
 
         int i = 0; // TODO MITT
         for (MotorisedVehicle<?, ?> motorisedVehicle : cc.vehicles) { // TODO MITT
@@ -61,7 +61,7 @@ public class CarController {
             for (MotorisedVehicle<?, ?> motorisedVehicle : vehicles) {
                 motorisedVehicle.move();
                 Point coordinates = motorisedVehicle.getCoordinates();
-                frame.drawPanel.moveIt(coordinates.x, coordinates.y);
+                // frame.drawPanel.moveIt(coordinates.x, coordinates.y);
                 frame.drawPanel.repaint(); // repaint() calls the paintComponent method of the panel
             }
         }
