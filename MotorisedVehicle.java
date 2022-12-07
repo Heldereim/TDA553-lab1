@@ -168,14 +168,6 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
         }
     }
 
-    public void setTurboOn() {
-
-    }
-
-    public void setTurboOff() {
-        
-    }
-
     @Override
     public String toString() {
         return "MotorisedVehicle [engine=" + engine + ", body=" + body + ", currentSpeed=" + currentSpeed + ", x=" + this.coordinates.x

@@ -24,7 +24,8 @@ public class CarController {
     CarView frame;
     // A list of cars, modify if needed
     ArrayList<MotorisedVehicle<?, ?>> allVehicles = new ArrayList<>();
-    ArrayList<Car<TurboEngine, ?>> turboEngineCars = new ArrayList<>();
+    ArrayList<Saab95> saabList = new ArrayList<>();
+    ArrayList<Scania> scaniaList = new ArrayList<>();
     
 
     // methods:
@@ -37,11 +38,13 @@ public class CarController {
         CarController cc = new CarController();
 
         Saab95 mySaab = new Saab95();
+        Scania myScania = new Scania();
 
         cc.allVehicles.add(new Volvo240());
-        cc.turboEngineCars.add(mySaab); // TODO MITT
+        cc.saabList.add(mySaab); // TODO MITT
         cc.allVehicles.add(mySaab);
-        cc.allVehicles.add(new Scania()); // TODO MITT
+        cc.scaniaList.add(myScania);
+        cc.allVehicles.add(myScania); // TODO MITT
 
 
 
@@ -65,7 +68,7 @@ public class CarController {
      */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (MotorisedVehicle<?, ?> motorisedVehicle : vehicles) {
+            for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
                 motorisedVehicle.move();
                 Point coordinates = motorisedVehicle.getCoordinates();
                 // frame.drawPanel.moveIt(coordinates.x, coordinates.y);
@@ -77,7 +80,7 @@ public class CarController {
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (MotorisedVehicle<?, ?> motorisedVehicle : vehicles) {
+        for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
 
             motorisedVehicle.gas(gas);
 
@@ -86,41 +89,44 @@ public class CarController {
 
     public void brake(int brakeamount) {
         double brake = ((double) brakeamount) / 100;
-        for (MotorisedVehicle<?, ?> motorisedVehicle : vehicles) {
+        for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
 
             motorisedVehicle.brake(brake);
         }
     }
 
     public void setTurboOff() {
-        for (MotorisedVehicle<?, ?> motorisedVehicle : vehicles) {
-            motorisedVehicle.setTurboOff();
-
+        for (Saab95 saab : saabList) {
+            saab.setTurboOff();
         }
     }
 
     public void setTurboOn() {
-        for (MotorisedVehicle<?, ?> motorisedVehicle : vehicles) {
-            motorisedVehicle.setTurboOn();
+        for (Saab95 saab : saabList) {
+            saab.setTurboOn();
         }
     }
 
-    // public void raisePlatform(int liftAmount) {
-    // TipPlatform.raisePlatform(liftAmount);
-    // }
+    public void raisePlatform(int liftAmount) {
+        for (Scania scania : scaniaList) {
+            scania.raisePlatform(liftAmount);
+        }
+    }
 
-    // public void lowerPlatform(int lowerAmount) {
-    // TipPlatform.lowerPlatform(lowerAmount);
-    // }
+    public void lowerPlatform(int lowerAmount) {
+        for (Scania scania : scaniaList) {
+            scania.lowerPlatform(lowerAmount);
+        }
+    }
 
     public void startEngine() {
-        for (MotorisedVehicle<?, ?> motorisedVehicle : vehicles) {
+        for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
             motorisedVehicle.startEngine();
         }
     }
 
     public void stopEngine() {
-        for (MotorisedVehicle<?, ?> motorisedVehicle : vehicles) {
+        for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
             motorisedVehicle.stopEngine();
         }
     }

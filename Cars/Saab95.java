@@ -14,12 +14,10 @@ public class Saab95 extends Car<TurboEngine, Body> {
         super(new TurboEngine(enginePower), new Body(modelName, color, nrDoors));
     }
     
-    @Override
     public void setTurboOn(){
 	    this.getEngine().turnOnTurbo();
     }
 
-    @Override
     public void setTurboOff(){
 	    this.getEngine().turnOffTurbo();
     }
