@@ -5,6 +5,6 @@ interface LoadableVehicle {
     // Point getCoordinates();
     // void setX(double x); // TODO Maybe reimmplement 
     // void setY(double y);
-    // double getX();
-    // double getY();
+    double getX();
+    double getY();
 }
