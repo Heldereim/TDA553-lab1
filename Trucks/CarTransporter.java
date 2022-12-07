@@ -4,17 +4,17 @@ import java.util.Stack;
 public class CarTransporter extends Truck {
 
     private CarPlatform carPlatform;
-    private Stack<LoadableVehicle> loadedVehicles;
+    private Stack<Car<?, ?>> loadedVehicles;
     private int maxCapacity;
 
     public CarTransporter(int maxCapacity) {
         super(new Engine(120), new Body("Transporter", Color.black, 2));
         this.carPlatform = new CarPlatform();
         this.maxCapacity = maxCapacity;
-        this.loadedVehicles = new Stack<LoadableVehicle>();
+        this.loadedVehicles = new Stack<Car<?, ?>>();
     }
 
-    public void load(LoadableVehicle car) {
+    public void load(Car<?, ?> car) {
         if (this.carPlatform.isPlatformDown()) {
             this.tryToLoad(car);
         } else {
@@ -22,7 +22,7 @@ public class CarTransporter extends Truck {
         }
     }
 
-    public LoadableVehicle unload() {
+    public Car<?, ?> unload() {
         return this.loadedVehicles.pop(); // Will throw exception if loadedVehicles is empty
     }
 
@@ -39,14 +39,13 @@ public class CarTransporter extends Truck {
         if (!this.carPlatform.isPlatformDown()) {
             super.move();
             for (int i = 0; i < loadedVehicles.size(); i++) { // Update positions of loaded vehicles
-                loadedVehicles.get(i).setX(this.getX());
-                loadedVehicles.get(i).setY(this.getY());
+                loadedVehicles.get(i).setCoordinates(this.getCoordinates());
+                loadedVehicles.get(i).setCoordinates(this.getCoordinates());
             }
         }
     }
 
-    private void tryToLoad(LoadableVehicle car) {
-
+    private void tryToLoad(Car<?, ?> car) {
         if (this.loadedVehicles.size() < this.maxCapacity) {
             this.loadedVehicles.push(car);
         } else {
@@ -58,7 +57,7 @@ public class CarTransporter extends Truck {
         return this.carPlatform.isPlatformDown();
     }
 
-    public LoadableVehicle lookTopCar() {
+    public Car<?, ?> lookTopCar() {
         return this.loadedVehicles.peek();
     }
 

@@ -1,30 +1,41 @@
 import java.util.ArrayList;
+import java.awt.Point;
 
 public class CarRepairShop {
-    private double x;
-    private double y;
+    private Point coordinates;
 
     private int maxCapacity;
 
     private final double LOAD_RANGE = 5.0;
 
-    private ArrayList<LoadableVehicle> repairshopGarage;
+    private ArrayList<Car<?, ?>> repairshopGarage;
 
     public CarRepairShop(double x, double y, int maxCapacity) { 
-        this.x = x;
-        this.y = y;
+        this.coordinates = new Point((int) x, (int) y);
         this.maxCapacity = maxCapacity;
-        this.repairshopGarage = new ArrayList<LoadableVehicle>();
+        this.repairshopGarage = new ArrayList<Car<?, ?>>();
     }
+
+    public CarRepairShop(Point coordinates, int maxCapacity) {
+        this.coordinates = coordinates;
+        this.maxCapacity = maxCapacity;
+        this.repairshopGarage = new ArrayList<Car<?, ?>>();
+    }
+
+
 
     //--------------------Getters---------------------------------
     
-    public double getX(){
-        return this.x;
-    }
+    // public double getX(){ // TODO Maybe use if it breaks too much...
+    //     return this.x;
+    // }
 
-        public double getY(){
-        return this.y;
+    //     public double getY(){
+    //     return this.y;
+    // }
+
+    public Point getCoordinates() {
+        return this.coordinates;
     }
 
         public double getMaxCapacity(){
@@ -33,33 +44,37 @@ public class CarRepairShop {
 
     //--------------------Setters--------------------------------
 
-    public void setX(double x) {
-        this.x = x;
-    }
+    // public void setX(double x) { // TODO Maybe use if it breaks too much...
+    //     this.x = x;
+    // }
 
-        public void setY(double y) {
-        this.y = y;
+    //     public void setY(double y) {
+    //     this.y = y;
+    // }
+
+    public void setCoordiantes(Point coordinates) {
+        this.coordinates = coordinates;
     }
 
     //-------------------Repairshop misc-------------------------
 
-    public void load(LoadableVehicle car) {
-        this.AssertInRange(car.getX(), car.getY());
+    public void load(Car<?, ?> car) {
+        this.AssertInRange(car.getCoordinates());
         this.tryToLoad(car);
     }
 
     public void carTransfer(CarTransporter transCar, int amountToLoad) {
         
         this.AssertCapacityLeft(transCar, amountToLoad);
-        this.AssertInRange(transCar.getX(), transCar.getY());
+        this.AssertInRange(transCar.getCoordinates());
 
         for (int i = 0; i < amountToLoad; i++) {
             this.repairshopGarage.add(transCar.unload());
         }
     }
 
-    private void AssertInRange (double x, double y) throws IllegalArgumentException {
-        if (this.getDistance(x, y) > this.LOAD_RANGE) {
+    private void AssertInRange (Point coordinates) throws IllegalArgumentException {
+        if (this.getDistance(coordinates) > this.LOAD_RANGE) {
             throw new IllegalStateException("Too far away from repair shop to transfer.");
         }
     }
@@ -71,7 +86,7 @@ public class CarRepairShop {
     }
 
     public void carTransfer(CarTransporter transCar) {
-        this.AssertInRange(transCar.getX(), transCar.getY());
+        this.AssertInRange(transCar.getCoordinates());
 
         if (!this.isFull()) {
             this.repairshopGarage.add(transCar.unload());
@@ -80,12 +95,12 @@ public class CarRepairShop {
         }
     }
 
-    public void unload(LoadableVehicle car) {
+    public void unload(Car<?, ?> car) {
         this.repairshopGarage.remove(car);
         this.carToRepairShopPos(car);
     }
 
-    private void tryToLoad(LoadableVehicle car) {
+    private void tryToLoad(Car<?, ?> car) {
     if (!this.isFull()) {
             this.repairshopGarage.add(car);
             this.carToRepairShopPos(car);
@@ -103,13 +118,14 @@ public class CarRepairShop {
         return "CarRepairShop [repairshopGarage=" + repairshopGarage + "]";
     }
 
-    private void carToRepairShopPos(LoadableVehicle car) {
-        car.setX(this.x);
-        car.setY(this.y);
+    private void carToRepairShopPos(Car<?, ?> car) {
+        car.setCoordinates(this.coordinates);
     }
     
-    public double getDistance(double x, double y) {
-        return Math.sqrt((Math.pow((this.x - x), 2)) + Math.pow((this.y - y), 2));
+    public double getDistance(Point coordiantes) {
+        int x = coordinates.x;
+        int y = coordinates.y;
+        return Math.sqrt((Math.pow((this.coordinates.x - x), 2)) + Math.pow((this.coordinates.y - y), 2));
     }
 
 }

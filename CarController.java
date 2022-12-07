@@ -30,7 +30,7 @@ public class CarController {
     public static void main(String[] args) {
         // Instance of this class
         
-        final double INITIAL_DISTANCE = 100.0; // TODO MITT
+        final int INITIAL_DISTANCE = 100; // TODO MITT
         
         CarController cc = new CarController();
 
@@ -40,7 +40,7 @@ public class CarController {
         
         int i = 0;                      // TODO MITT
         for(MotorisedVehicle<?, ?> motorisedVehicle : cc.vehicles) {
-            motorisedVehicle.moveIt(0.0 , (i*INITIAL_DISTANCE));        // Ökar distansen med 100 mellan varje bil i y-led
+            motorisedVehicle.setCoordinates(new Point(0 , (i*INITIAL_DISTANCE)));        // Ökar distansen med 100 mellan varje bil i y-led
             i++;
         }  
 
@@ -76,11 +76,17 @@ public class CarController {
     }
 }
 
-public void brake(int brakeamount) {
-    double brake = ((double) brakeamount) / 100;
+    public void brake(int brakeamount) {
+        double brake = ((double) brakeamount) / 100;
         for (MotorisedVehicle<?,?> motorisedVehicle : vehicles) {
            
             motorisedVehicle.brake(brake);
+        }
+    }
+
+    public void setTurboOn() {
+        for (MotorisedVehicle<?, ?> saab : vehicles) {
+            
         }
     }
 
