@@ -77,8 +77,8 @@ public class CarController {
     }
 }
 
-public void brake(int brakeamount) {
-    double brake = ((double) brakeamount) / 100;
+    public void brake(int brakeamount) {
+        double brake = ((double) brakeamount) / 100;
         for (MotorisedVehicle<?,?> motorisedVehicle : vehicles) {
            
             motorisedVehicle.brake(brake);
