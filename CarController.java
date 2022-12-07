@@ -1,4 +1,6 @@
 import javax.swing.*;
+
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -57,11 +59,9 @@ public class CarController {
         public void actionPerformed(ActionEvent e) {
             for (MotorisedVehicle<?, ?> motorisedVehicle : vehicles) {
                 motorisedVehicle.move();
-                double x = (double) Math.round(motorisedVehicle.getX());
-                double y = (double) Math.round(motorisedVehicle.getY());
-                frame.drawPanel.moveIt(x, y);
-                // repaint() calls the paintComponent method of the panel
-                frame.drawPanel.repaint();
+                Point coordinates = motorisedVehicle.getCoordinates();
+                frame.drawPanel.moveIt(coordinates.x, coordinates.y);
+                frame.drawPanel.repaint(); // repaint() calls the paintComponent method of the panel
             }
         }
     }
@@ -75,4 +75,13 @@ public class CarController {
         
     }
 }
+
+public void brake(int brakeamount) {
+    double brake = ((double) brakeamount) / 100;
+        for (MotorisedVehicle<?,?> motorisedVehicle : vehicles) {
+           
+            motorisedVehicle.brake(brake);
+        }
+    }
+
 }

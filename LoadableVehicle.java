@@ -1,6 +1,10 @@
+import java.awt.Point;
+
 interface LoadableVehicle {
-    void setX(double x);
-    void setY(double y);
-    double getX();
-    double getY();
+    // void setCoordiantes(Point coordinates);
+    // Point getCoordinates();
+    // void setX(double x); // TODO Maybe reimmplement 
+    // void setY(double y);
+    // double getX();
+    // double getY();
 }

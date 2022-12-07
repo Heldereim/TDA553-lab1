@@ -7,7 +7,7 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
     private B body;
     private double currentSpeed;
 
-    private double x, y; // Coordinates
+    private Point coordinates; // Coordinates
 
     private Direction direction; // Current direction
 
@@ -15,8 +15,7 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
         this.engine = engine;
         this.body = body;
         this.stopEngine();
-        this.x = 0;
-        this.y = 0;
+        this.coordinates = new Point(0, 0);
         this.direction = Direction.NORTH;
     }
 
@@ -58,20 +57,26 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
         return this.engine;
     }
 
-    public double getX() { 
-        return this.x;
-    }
+    // public double getX() { // TODO Maybe keep if it breaks a lot
+    //     return this.coordinates.x;
+    // }
 
-    public double getY() {
-        return this.y;
+    // public double getY() {
+    //     return this.coordinates.y;
+    // }
+
+    public Point getCoordinates() {
+        return this.coordinates;
     }
 
     public Direction getDirection() {
         return this.direction;
     }
 
-    public double getDistance(double x, double y) {
-        return Math.sqrt((Math.pow((x - this.x), 2)) + Math.pow((y - this.y), 2));
+    public double getDistance(Point coordinates) {
+        double x = coordinates.x;
+        double y = coordinates.y;
+        return Math.sqrt((Math.pow((x - this.coordinates.x), 2)) + Math.pow((y - this.coordinates.y), 2));
     }
 
    //------------------------------------- Setters----------------------------------------//
@@ -87,12 +92,16 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
         this.body.setColor(color);
     }
 
-    public void setX(double x) {
-        this.x = x;
-    }
+    // public void setX(double x) { // TODO Maybe keep if it breaks a lot
+    //     this.x = x;
+    // }
 
-    public void setY(double y) {
-        this.y = y;
+    // public void setY(double y) {
+    //     this.y = y;
+    // }
+
+    public void setCoordinates(Point coordinates) {
+        this.coordinates = coordinates;
     }
 
     
@@ -145,29 +154,24 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
     public void move() {
         switch (this.direction) {
             case NORTH:
-                this.y += this.currentSpeed;
+                this.coordinates.y += this.currentSpeed;
                 break;
             case EAST:
-                this.x += this.currentSpeed;
+                this.coordinates.x += this.currentSpeed;
                 break;
             case SOUTH:
-                this.y -= this.currentSpeed;
+                this.coordinates.y -= this.currentSpeed;
                 break;
             case WEST:
-                this.x -= this.currentSpeed;
+                this.coordinates.x -= this.currentSpeed;
                 break;
         }
     }
 
-    public void moveIt(double x, double y) {
-        this.x = x;
-        this.y = y;
-    }
-
     @Override
     public String toString() {
-        return "MotorisedVehicle [engine=" + engine + ", body=" + body + ", currentSpeed=" + currentSpeed + ", x=" + x
-                + ", y=" + y + "]";
+        return "MotorisedVehicle [engine=" + engine + ", body=" + body + ", currentSpeed=" + currentSpeed + ", x=" + this.coordinates.x
+                + ", y=" + this.coordinates.y + "]";
     }
     
 }
