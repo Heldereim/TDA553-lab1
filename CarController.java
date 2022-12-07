@@ -23,7 +23,9 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
-    ArrayList<MotorisedVehicle<?, ?>> vehicles = new ArrayList<>();
+    ArrayList<MotorisedVehicle<?, ?>> allVehicles = new ArrayList<>();
+    ArrayList<Car<TurboEngine, ?>> turboEngineCars = new ArrayList<>();
+    
 
     // methods:
 
@@ -34,12 +36,17 @@ public class CarController {
 
         CarController cc = new CarController();
 
-        //cc.vehicles.add(new Volvo240());
-        cc.vehicles.add(new Saab95()); // TODO MITT
-        // cc.vehicles.add(new Scania()); // TODO MITT
+        Saab95 mySaab = new Saab95();
+
+        cc.allVehicles.add(new Volvo240());
+        cc.turboEngineCars.add(mySaab); // TODO MITT
+        cc.allVehicles.add(mySaab);
+        cc.allVehicles.add(new Scania()); // TODO MITT
+
+
 
         int i = 0; // TODO MITT
-        for (MotorisedVehicle<?, ?> motorisedVehicle : cc.vehicles) { // TODO MITT
+        for (MotorisedVehicle<?, ?> motorisedVehicle : cc.allVehicles) { // TODO MITT
             Point point = new Point(0, (i * INITIAL_DISTANCE));
             motorisedVehicle.setCoordinates(point); // Ökar distansen med 100 mellan varje bil i y-led
             i++;
