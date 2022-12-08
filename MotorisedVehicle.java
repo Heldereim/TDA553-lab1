@@ -109,6 +109,8 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
 
     public void gas(double var1) {
 
+        System.out.println("Gas MotorizedVehicle: ");
+
         if (var1 >= 0 && var1 <= 1) { // Check input is between [0..1]. If > 1 then 1, if < 0 then 0
             this.incrementSpeed(var1);
         } else if (var1 > 1) {

@@ -20,14 +20,14 @@ public class DrawPanel extends JPanel{
     Point scaniaPoint = new Point(); // MITT
 
     void moveIt(double x, double y) {
-        volvoPoint.x += (int) x;
-        volvoPoint.y += (int) y;
+        volvoPoint.x = (int) x;
+        volvoPoint.y = (int) y;
 
-        saabPoint.x += (int) x;
-        saabPoint.y += (int) y;
+        saabPoint.x = (int) x;
+        saabPoint.y = (int) y;
 
-        scaniaPoint.x += (int) x;
-        scaniaPoint.y += (int) y;
+        scaniaPoint.x = (int) x;
+        scaniaPoint.y = (int) y;
         System.out.println("Hej");
     }
 

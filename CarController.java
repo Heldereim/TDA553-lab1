@@ -38,19 +38,19 @@ public class CarController {
         CarController cc = new CarController();
 
         Saab95 mySaab = new Saab95();
-        Scania myScania = new Scania();
+        //Scania myScania = new Scania();
 
         //cc.allVehicles.add(new Volvo240());
         cc.saabList.add(mySaab); // TODO MITT
         cc.allVehicles.add(mySaab);
-        cc.scaniaList.add(myScania);
-        cc.allVehicles.add(myScania); // TODO MITT
+        //cc.scaniaList.add(myScania);
+        //cc.allVehicles.add(myScania); // TODO MITT
 
 
 
         int i = 0; // TODO MITT
         for (MotorisedVehicle<?, ?> motorisedVehicle : cc.allVehicles) { // TODO MITT
-            Point point = new Point(0, (i * INITIAL_DISTANCE));
+            Point point = new Point(0, (i*INITIAL_DISTANCE));
             motorisedVehicle.setCoordinates(point); // Ökar distansen med 100 mellan varje bil i y-led
             i++;
         }
@@ -70,8 +70,8 @@ public class CarController {
         public void actionPerformed(ActionEvent e) {
             for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
                 motorisedVehicle.move();
-                //Point coordinates = motorisedVehicle.getCoordinates();
-                // frame.drawPanel.moveIt(coordinates.x, coordinates.y);
+                Point coordinates = motorisedVehicle.getCoordinates();
+                frame.drawPanel.moveIt(coordinates.x, coordinates.y);
                 frame.drawPanel.repaint(); // repaint() calls the paintComponent method of the panel
             }
         }
@@ -80,6 +80,7 @@ public class CarController {
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
+        System.out.println("Gas CarController: " + gas);
         for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
 
             motorisedVehicle.gas(gas);
