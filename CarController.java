@@ -37,10 +37,11 @@ public class CarController {
 
         CarController cc = new CarController();
 
+        Volvo240 myVolvo = new Volvo240();
         Saab95 mySaab = new Saab95();
         Scania myScania = new Scania();
 
-        cc.allVehicles.add(new Volvo240());
+        cc.allVehicles.add(myVolvo);
         cc.saabList.add(mySaab); // TODO MITT
         cc.allVehicles.add(mySaab);
         cc.scaniaList.add(myScania);
@@ -70,8 +71,8 @@ public class CarController {
         public void actionPerformed(ActionEvent e) {
             for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
                 motorisedVehicle.move();
-                Point coordinates = motorisedVehicle.getCoordinates();
-                frame.drawPanel.moveIt(motorisedVehicle, coordinates.x, coordinates.y);
+                // Point coordinates = motorisedVehicle.getCoordinates();
+                // frame.drawPanel.moveIt(motorisedVehicle, coordinates.x, coordinates.y);
                 frame.drawPanel.repaint(); // repaint() calls the paintComponent method of the panel
             }
         }

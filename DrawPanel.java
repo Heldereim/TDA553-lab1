@@ -2,6 +2,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -15,26 +17,37 @@ public class DrawPanel extends JPanel{
     BufferedImage scaniaImage; // MITT
 
     // To keep track of a singel cars position
-    Point volvoPoint = new Point();
-    Point saabPoint = new Point();  // MITT
-    Point scaniaPoint = new Point(); // MITT
+    // Point volvoPoint = new Point();
+    // Point saabPoint = new Point();  // MITT
+    // Point scaniaPoint = new Point(); // MITT
 
-    void moveIt(MotorisedVehicle<?,?> motorisedVehicle, double x, double y) {
-        volvoPoint.x = (int) x;
-        volvoPoint.y = (int) y;
+    MotorisedVehicle<?, ?> myVolvo;
+    MotorisedVehicle<?, ?> mySaab;
+    MotorisedVehicle<?, ?> myScania;
 
-        saabPoint.x = (int) x + 100;
-        saabPoint.y = (int) y;
+    // void moveIt(MotorisedVehicle<?,?> motorisedVehicle, double x, double y) {
+    //     volvoPoint.x = (int) motorisedVehicle.getCoordinates().x;
+    //     volvoPoint.y = (int) motorisedVehicle.getCoordinates().y;
 
-        scaniaPoint.x = (int) x + 200;
-        scaniaPoint.y = (int) y;
-    }
+    //     saabPoint.x = (int) x + 100;
+    //     saabPoint.y = (int) y;
+
+    //     scaniaPoint.x = (int) x + 200;
+    //     scaniaPoint.y = (int) y;
+
+     //   Point testPoint = new Point( ( (int) x) , ( (int) y) );
+     //  motorisedVehicle.setCoordinates(testPoint);
+    
 
     // Initializes the panel and reads the images
-    public DrawPanel(int x, int y) {
+    public DrawPanel(int x, int y, ArrayList<MotorisedVehicle<?, ?>> allVehicles) {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.GRAY);
+
+        this.myVolvo = allVehicles.get(0);
+        this.mySaab = allVehicles.get(1);
+        this.myScania = allVehicles.get(2);
         // Print an error message in case file is not found with a try/catch block
         try {
             // You can remove the "pics" part if running outside of IntelliJ and
@@ -60,8 +73,12 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
-        g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);         // MITT
-        g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);  // MITT  
+        // g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
+        // g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);         // MITT
+        // g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);  // MITT  
+
+        g.drawImage(volvoImage, this.myVolvo.getCoordinates().x, this.myVolvo.getCoordinates().y, null);
+        g.drawImage(saabImage, this.mySaab.getCoordinates().x , this.mySaab.getCoordinates().y, null);
+        g.drawImage(scaniaImage, this.myScania.getCoordinates().x, this.myScania.getCoordinates().y, null);
     }
 }

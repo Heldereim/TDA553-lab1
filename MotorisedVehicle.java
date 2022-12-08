@@ -99,7 +99,7 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
     }
 
     private void incrementSpeed(double amount) { // Increse movementspeed of the vehicle
-        this.setCurrentSpeed((Math.min(getCurrentSpeed() + speedFactor() * amount, this.getEnginePower())));
+        this.setCurrentSpeed( (Math.min(getCurrentSpeed() + speedFactor() * amount, this.getEnginePower() )));
     }
 
     private void decrementSpeed(double amount) { // Lowers the speed of the vehicle, using the highest value when
