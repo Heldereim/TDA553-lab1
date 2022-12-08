@@ -11,8 +11,8 @@ public class carReparShopTest {
     @Test
     public void constructorTest(){
         CarRepairShop myShop = new CarRepairShop(0, 0, 2);
-        assertEquals(0.0, myShop.getX(), 0.001);
-        assertEquals(0.0, myShop.getY(), 0.001);
+        assertEquals(0.0, myShop.getCoordinates().x, 0.001);
+        assertEquals(0.0, myShop.getCoordinates().y, 0.001);
         assertEquals(2, myShop.getMaxCapacity(), 0.001);
     }
 
@@ -35,14 +35,14 @@ public class carReparShopTest {
 
         CarRepairShop myShop = new CarRepairShop(2, 2, 2);
 
-        assertEquals(0.0, testVolvo.getX(), 0.001);
-        assertEquals(0.0, testVolvo.getY(), 0.001);
+        assertEquals(0.0, testVolvo.getCoordinates().x, 0.001);
+        assertEquals(0.0, testVolvo.getCoordinates().y, 0.001);
 
         myShop.load(testVolvo);
         myShop.unload(testVolvo);
 
-        assertEquals(2.0, testVolvo.getX(), 0.001);
-        assertEquals(2.0, testVolvo.getY(), 0.001);
+        assertEquals(2.0, testVolvo.getCoordinates().x, 0.001);
+        assertEquals(2.0, testVolvo.getCoordinates().y, 0.001);
     }
 
     @Test

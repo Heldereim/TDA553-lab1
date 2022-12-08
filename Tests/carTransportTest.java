@@ -52,7 +52,7 @@ public class carTransportTest {
         carTransporter.turnLeft();
         carTransporter.move();
 
-        assertEquals(carTransporter.getX(), mySaab95.getX(), 0.001);
-        assertEquals(carTransporter.getX(), myVolvo.getX(), 0.001);
+        assertEquals(carTransporter.getCoordinates().x, mySaab95.getCoordinates().x, 0.001);
+        assertEquals(carTransporter.getCoordinates().x, myVolvo.getCoordinates().x, 0.001);
     }
 }

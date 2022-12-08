@@ -16,6 +16,7 @@ public class Saab95 extends Car<TurboEngine, Body> {
     
     public void setTurboOn(){
 	    this.getEngine().turnOnTurbo();
+        this.getEngine();
     }
 
     public void setTurboOff(){

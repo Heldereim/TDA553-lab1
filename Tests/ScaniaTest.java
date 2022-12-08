@@ -38,9 +38,9 @@ public class ScaniaTest {
         
         assertThrows(IllegalArgumentException.class, () -> testScania.raisePlatform(20));
         testScania.move();
-        assertEquals(1.05, testScania.getY(), 0.001);
+        assertEquals(1.05, testScania.getCoordinates().y, 0.001);
         testScania.turnLeft();
         testScania.move();
-        assertEquals(-1.05, testScania.getX(), 0.001);
+        assertEquals(-1.05, testScania.getCoordinates().x, 0.001);
     }
 }

@@ -40,7 +40,7 @@ public class CarController {
         Saab95 mySaab = new Saab95();
         Scania myScania = new Scania();
 
-        cc.allVehicles.add(new Volvo240());
+        //cc.allVehicles.add(new Volvo240());
         cc.saabList.add(mySaab); // TODO MITT
         cc.allVehicles.add(mySaab);
         cc.scaniaList.add(myScania);
@@ -70,7 +70,7 @@ public class CarController {
         public void actionPerformed(ActionEvent e) {
             for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
                 motorisedVehicle.move();
-                Point coordinates = motorisedVehicle.getCoordinates();
+                //Point coordinates = motorisedVehicle.getCoordinates();
                 // frame.drawPanel.moveIt(coordinates.x, coordinates.y);
                 frame.drawPanel.repaint(); // repaint() calls the paintComponent method of the panel
             }
@@ -96,12 +96,14 @@ public class CarController {
     }
 
     public void setTurboOff() {
+        System.out.println("TurboOFF");
         for (Saab95 saab : saabList) {
             saab.setTurboOff();
         }
     }
 
     public void setTurboOn() {
+        System.out.println("TurboON");
         for (Saab95 saab : saabList) {
             saab.setTurboOn();
         }
@@ -120,15 +122,16 @@ public class CarController {
     }
 
     public void startEngine() {
+        System.out.println("StartEngine");
         for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
             motorisedVehicle.startEngine();
         }
     }
 
     public void stopEngine() {
+        System.out.println("StopEngine");
         for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
             motorisedVehicle.stopEngine();
         }
     }
-
 }

@@ -26,14 +26,6 @@ public class CarRepairShop {
 
     //--------------------Getters---------------------------------
     
-    // public double getX(){ // TODO Maybe use if it breaks too much...
-    //     return this.x;
-    // }
-
-    //     public double getY(){
-    //     return this.y;
-    // }
-
     public Point getCoordinates() {
         return this.coordinates;
     }
@@ -43,14 +35,6 @@ public class CarRepairShop {
     }
 
     //--------------------Setters--------------------------------
-
-    // public void setX(double x) { // TODO Maybe use if it breaks too much...
-    //     this.x = x;
-    // }
-
-    //     public void setY(double y) {
-    //     this.y = y;
-    // }
 
     public void setCoordiantes(Point coordinates) {
         this.coordinates = coordinates;
