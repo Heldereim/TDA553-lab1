@@ -5,6 +5,7 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
 
     private E engine;
     private B body;
+    private Boolean engineOn;
     private double currentSpeed;
 
     private Point coordinates; // Coordinates
@@ -13,6 +14,7 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
 
     public MotorisedVehicle(E engine, B body) {
         this.engine = engine;
+        this.engineOn = false;
         this.body = body;
         this.stopEngine();
         this.coordinates = new Point(0, 0);
@@ -22,11 +24,12 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
     // ------------------------------------- Engine misc
     // ----------------------------------------//
     public void startEngine() {
-        this.setCurrentSpeed(0.1);
+        this.engineOn = true;
     }
 
     public void stopEngine() {
         this.currentSpeed = 0;
+        this.engineOn = false;
     }
 
     // ------------------------------------- Getters
@@ -73,6 +76,10 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
         return Math.sqrt((Math.pow((x - this.coordinates.x), 2)) + Math.pow((y - this.coordinates.y), 2));
     }
 
+    public Boolean getEngineOn() {
+        return this.engineOn;
+    }
+
     // -------------------------------------
     // Setters----------------------------------------//
     public void setEnginePower(double enginePower) { // Might be unnecessary
@@ -99,7 +106,7 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
     }
 
     private void incrementSpeed(double amount) { // Increse movementspeed of the vehicle
-        this.setCurrentSpeed( (Math.min(getCurrentSpeed() + speedFactor() * amount, this.getEnginePower() )));
+        this.setCurrentSpeed((Math.min(getCurrentSpeed() + speedFactor() * amount, this.getEnginePower())));
     }
 
     private void decrementSpeed(double amount) { // Lowers the speed of the vehicle, using the highest value when
@@ -107,43 +114,46 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
                                                                                        // speedFactor() * amount with 0
     }
 
-    public void gas(double var1) {
+    // public void gas(double var1) {
+    //     if (this.engineOn) {
+    //         System.out.println("Gas MotorizedVehicle: ");
 
-        System.out.println("Gas MotorizedVehicle: ");
-
-        if (var1 >= 0 && var1 <= 1) { // Check input is between [0..1]. If > 1 then 1, if < 0 then 0
-            this.incrementSpeed(var1);
-        } else if (var1 > 1) {
-            this.incrementSpeed(1);
-        } else {
-            this.incrementSpeed(0);
-        }
-    }
+    //         if (var1 >= 0 && var1 <= 1) { // Check input is between [0..1]. If > 1 then 1, if < 0 then 0
+    //             this.incrementSpeed(var1);
+    //         } else if (var1 > 1) {
+    //             this.incrementSpeed(1);
+    //         } else {
+    //             this.incrementSpeed(0);
+    //         }
+    //     } else {
+    //         throw new IllegalStateException("Error! Can not gas, the engine is off");
+    //     }
+    // }
 
     // TODO Detta är en förbättrad version av gas, som tar hand om eventuella
     // errors/outside range fall först enligt
     // https://www.geeksforgeeks.org/writing-clean-else-statements/
-    /*
-    public void gas(double amount) {
-    if (!engineIsOn) {
-        throw new Exception("Error! Can not gas, the engine is off");
-        return;
-    }
+    
+     public void gas(double amount) {
+     if (!this.engineOn) {
+        throw new IllegalStateException("Error! Can not gas, the engine is off");
+      }
+      
+      if (amount > 1) {
+      this.incrementSpeed(1); // Magic number???
+      return;
+      }
+      
+      if (amount < 0) {
+      this.incrementSpeed(0);
+      return;
+      }
+      
+      this.incrementSpeed(amount); // Räcker med denna, om den skulle vara < 0 eller
+                                   // > 1 hade ovan if-statements fångat det.
+      
+    } 
 
-    if (amount > 1) {
-        this.incrementSpeed(1); // Magic number??? 
-        return;
-    }
-
-    if (amount < 0) {
-        this.incrementSpeed(0);
-        return;
-    }
-
-    this.incrementSpeed(amount); // Räcker med denna, om den skulle vara <0 eller >1 hade ovan if-statements fångat det. 
-
-}
-     */
     public void brake(double var1) { // Check input is between [0..1]. If > 1 then 1, if < 0 then 0
         if (var1 >= 0 && var1 <= 1) {
             this.decrementSpeed(var1);

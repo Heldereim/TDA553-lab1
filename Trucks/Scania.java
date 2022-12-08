@@ -6,7 +6,7 @@ public class Scania extends Truck{
 
 
    public Scania() {
-      super(new Engine(150), new Body("Scania", Color.WHITE, 2));
+      super(new Engine(90), new Body("Scania", Color.WHITE, 2));
       this.tipPlatform = new TipPlatform();
    }
 
