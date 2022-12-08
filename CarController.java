@@ -71,7 +71,7 @@ public class CarController {
             for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
                 motorisedVehicle.move();
                 Point coordinates = motorisedVehicle.getCoordinates();
-                frame.drawPanel.moveIt(coordinates.x, coordinates.y);
+                frame.drawPanel.moveIt(motorisedVehicle, coordinates.x, coordinates.y);
                 frame.drawPanel.repaint(); // repaint() calls the paintComponent method of the panel
             }
         }

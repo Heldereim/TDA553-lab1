@@ -19,16 +19,15 @@ public class DrawPanel extends JPanel{
     Point saabPoint = new Point();  // MITT
     Point scaniaPoint = new Point(); // MITT
 
-    void moveIt(double x, double y) {
+    void moveIt(MotorisedVehicle<?,?> motorisedVehicle, double x, double y) {
         volvoPoint.x = (int) x;
         volvoPoint.y = (int) y;
 
-        saabPoint.x = (int) x + 30;
+        saabPoint.x = (int) x + 100;
         saabPoint.y = (int) y;
 
-        scaniaPoint.x = (int) x + 30;
+        scaniaPoint.x = (int) x + 200;
         scaniaPoint.y = (int) y;
-        System.out.println("Hej");
     }
 
     // Initializes the panel and reads the images
