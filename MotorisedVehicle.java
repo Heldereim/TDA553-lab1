@@ -135,17 +135,31 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
 
         this.incrementSpeed(amount); // Räcker med denna, om den skulle vara < 0 eller
                                      // > 1 hade ovan if-statements fångat det.
-
     }
 
-    public void brake(double var1) { // Check input is between [0..1]. If > 1 then 1, if < 0 then 0
-        if (var1 >= 0 && var1 <= 1) {
-            this.decrementSpeed(var1);
-        } else if (var1 > 1) {
+    public void brake(double amount) { // Check input is between [0..1]. If > 1 then 1, if < 0 then 0
+        
+        if (amount > 1) {
+            this.decrementSpeed(1); // Magic number???
+            return;
+        }
+
+        if (amount < 0) {
+            this.decrementSpeed(0);
+            return;
+        }
+
+        this.decrementSpeed(amount); // Räcker med denna, om den skulle vara < 0 eller
+                                     // > 1 hade ovan if-statements fångat det.
+        
+       /* // Tidigare: 
+        if (amount >= 0 && amount <= 1) {
+            this.decrementSpeed(amount);
+        } else if (amount > 1) {
             this.decrementSpeed(1);
         } else {
             this.decrementSpeed(0);
-        }
+        } */
     }
 
     // ------------------------------------- Direction and movement

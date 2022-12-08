@@ -80,13 +80,7 @@ public class CarController {
 
     // Calls the gas method for each car once
     void gas(int amount) {
-        double gas = ((double) amount) / 100;
-        System.out.println("Gas CarController: " + gas);
-        for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
-
-            motorisedVehicle.gas(gas);
-
-        }
+        
     }
 
     public void brake(int brakeamount) {
@@ -98,10 +92,7 @@ public class CarController {
     }
 
     public void setTurboOff() {
-        System.out.println("TurboOFF");
-        for (Saab95 saab : saabList) {
-            saab.setTurboOff();
-        }
+
     }
 
     public void setTurboOn() {
@@ -136,4 +127,83 @@ public class CarController {
             motorisedVehicle.stopEngine();
         }
     }
+
+    frame.gasButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            double gas = ((double) frame.gasAmount) / 100;
+            System.out.println("Gas CarController: " + gas);
+            for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
+
+                motorisedVehicle.gas(gas);
+
+            }
+        }
+    });
+
+    frame.brakeButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            double brake = 100.00;
+            for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
+
+                motorisedVehicle.brake(brake);
+            }
+        }
+    }); 
+
+    frame.turboOffButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("TurboOFF");
+            for (Saab95 saab : saabList) {
+                saab.setTurboOff();
+            }
+        }
+    });
+
+    frame.turboOnButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("TurboON");
+            for (Saab95 saab : saabList) {
+                saab.setTurboOn();
+            }
+        }
+    });
+
+    frame.liftBedButton.addActionListener(new ActionListener() {
+        @Override   
+        public void actionPerformed(ActionEvent e) {
+            for (Scania scania : scaniaList) {
+                scania.raisePlatform(100);
+            }
+        }
+    });
+
+    frame.lowerBedButton.addActionListener(new ActionListener()  {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            for (Scania scania : scaniaList) {
+                scania.lowerPlatform(0);
+            }
+        }
+    });
+
+    frame.startButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
+                motorisedVehicle.startEngine();
+            }
+        }
+    });
+
+    frame.stopButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
+                motorisedVehicle.stopEngine();
+            }
+    }});
 }
