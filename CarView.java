@@ -113,7 +113,7 @@ public class CarView extends JFrame{
         brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.brake(10000);
+                carC.brake(gasAmount);
             }
         }); 
 

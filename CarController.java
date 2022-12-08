@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class CarController {
     // member fields:
 
-    // The delay (ms) corresponds to 20 updates a sec (hz)
+    // The delay (ms) corresponds to 50 updates a sec (hz)
     private final int DELAY = 50;
 
     // each step between delays.

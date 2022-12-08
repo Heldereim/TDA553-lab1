@@ -3,7 +3,7 @@ import java.awt.*;
 public class Saab95 extends Car<TurboEngine, Body> {
     
     public Saab95(){
-        super(new TurboEngine(125.0), new Body("Saab95", Color.gray, 2));
+        super(new TurboEngine(100.0), new Body("Saab95", Color.gray, 2));
     }
 
     public Saab95(TurboEngine engine, Body body){
