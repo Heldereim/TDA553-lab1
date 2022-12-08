@@ -114,45 +114,29 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
                                                                                        // speedFactor() * amount with 0
     }
 
-    // public void gas(double var1) {
-    //     if (this.engineOn) {
-    //         System.out.println("Gas MotorizedVehicle: ");
-
-    //         if (var1 >= 0 && var1 <= 1) { // Check input is between [0..1]. If > 1 then 1, if < 0 then 0
-    //             this.incrementSpeed(var1);
-    //         } else if (var1 > 1) {
-    //             this.incrementSpeed(1);
-    //         } else {
-    //             this.incrementSpeed(0);
-    //         }
-    //     } else {
-    //         throw new IllegalStateException("Error! Can not gas, the engine is off");
-    //     }
-    // }
-
     // TODO Detta är en förbättrad version av gas, som tar hand om eventuella
     // errors/outside range fall först enligt
     // https://www.geeksforgeeks.org/writing-clean-else-statements/
-    
-     public void gas(double amount) {
-     if (!this.engineOn) {
-        throw new IllegalStateException("Error! Can not gas, the engine is off");
-      }
-      
-      if (amount > 1) {
-      this.incrementSpeed(1); // Magic number???
-      return;
-      }
-      
-      if (amount < 0) {
-      this.incrementSpeed(0);
-      return;
-      }
-      
-      this.incrementSpeed(amount); // Räcker med denna, om den skulle vara < 0 eller
-                                   // > 1 hade ovan if-statements fångat det.
-      
-    } 
+
+    public void gas(double amount) {
+        if (!this.engineOn) {
+            throw new IllegalStateException("Error! Can not gas, the engine is off");
+        }
+
+        if (amount > 1) {
+            this.incrementSpeed(1); // Magic number???
+            return;
+        }
+
+        if (amount < 0) {
+            this.incrementSpeed(0);
+            return;
+        }
+
+        this.incrementSpeed(amount); // Räcker med denna, om den skulle vara < 0 eller
+                                     // > 1 hade ovan if-statements fångat det.
+
+    }
 
     public void brake(double var1) { // Check input is between [0..1]. If > 1 then 1, if < 0 then 0
         if (var1 >= 0 && var1 <= 1) {
