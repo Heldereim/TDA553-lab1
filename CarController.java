@@ -33,7 +33,7 @@ public class CarController {
     public static void main(String[] args) {
         // Instance of this class
 
-        final int INITIAL_DISTANCE = 1; // TODO MITT
+        final int INITIAL_DISTANCE = 100; // TODO MITT
 
         CarController cc = new CarController();
 
