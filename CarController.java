@@ -38,13 +38,13 @@ public class CarController {
         CarController cc = new CarController();
 
         Saab95 mySaab = new Saab95();
-        //Scania myScania = new Scania();
+        Scania myScania = new Scania();
 
-        //cc.allVehicles.add(new Volvo240());
+        cc.allVehicles.add(new Volvo240());
         cc.saabList.add(mySaab); // TODO MITT
         cc.allVehicles.add(mySaab);
-        //cc.scaniaList.add(myScania);
-        //cc.allVehicles.add(myScania); // TODO MITT
+        cc.scaniaList.add(myScania);
+        cc.allVehicles.add(myScania); // TODO MITT
 
 
 

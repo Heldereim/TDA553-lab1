@@ -23,10 +23,10 @@ public class DrawPanel extends JPanel{
         volvoPoint.x = (int) x;
         volvoPoint.y = (int) y;
 
-        saabPoint.x = (int) x;
+        saabPoint.x = (int) x + 30;
         saabPoint.y = (int) y;
 
-        scaniaPoint.x = (int) x;
+        scaniaPoint.x = (int) x + 30;
         scaniaPoint.y = (int) y;
         System.out.println("Hej");
     }
