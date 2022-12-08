@@ -16,7 +16,7 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
         this.body = body;
         this.stopEngine();
         this.coordinates = new Point(0, 0);
-        this.direction = Direction.NORTH;
+        this.direction = Direction.EAST;
     }
 
     // ------------------------------------- Engine misc
