@@ -1,25 +1,19 @@
 import java.util.*;
 import java.awt.Color;
 
-public class CarFactory {
+public abstract class CarFactory {
 
-    private ArrayList<Saab95> saabList;
-    private ArrayList<Scania> scaniaList;
-    private ArrayList<Volvo240> volvoList;
-    private ArrayList<ArrayList<MotorisedVehicle<?, ?>>> carList;
+    private ArrayList<Saab95> saabList = new ArrayList<>();
+    private ArrayList<Scania> scaniaList = new ArrayList<>();
+    private ArrayList<Volvo240> volvoList = new ArrayList<>();
+    private ArrayList<MotorisedVehicle<?, ?>> allVehicles = new ArrayList<>();
 
-    public CarFactory() {
-        this.saabList = new ArrayList<Saab95>();
-        this.scaniaList = new ArrayList<Scania>();
-        this.volvoList = new ArrayList<Volvo240>();
-        this.carList = new ArrayList<ArrayList<MotorisedVehicle<?, ?>>>();
 
-        this.carList.add(this.saabList); // TODO fucked because of 
-
-    }
+    // Make cars
 
     public void makeSaab() {
         Saab95 saab = new Saab95();
+        allVehicles.add(saab);
         saabList.add(saab);
     }
 
@@ -59,5 +53,23 @@ public class CarFactory {
     public void makeCarTransporter(int maxCapacity) {
         CarTransporter carTransporter = new CarTransporter(maxCapacity);
         allVehicles.add(carTransporter);
+    }
+
+    // Getters
+    
+    public ArrayList<Saab95> getSaabList() {
+        return saabList;
+    }
+
+    public ArrayList<Scania> getScaniaList() {
+        return scaniaList;
+    }
+
+    public ArrayList<Volvo240> getVolvoList() {
+        return volvoList;
+    }
+
+    public ArrayList<MotorisedVehicle<?, ?>> getAllVehicles() {
+        return allVehicles;
     }
 }
