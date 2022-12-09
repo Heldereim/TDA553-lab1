@@ -32,7 +32,7 @@ public class Application {
         }
 
         // Start a new view and send a reference of self
-        frame = new CarView("CarSim 1.0");
+        frame = cc.carview;
 
         // Start the timer
         timer.start();
@@ -42,8 +42,6 @@ public class Application {
         public void actionPerformed(ActionEvent e) {
             for (MotorisedVehicle<?, ?> motorisedVehicle : CarFactory.getAllVehicles()) {
                 motorisedVehicle.move();
-                // Point coordinates = motorisedVehicle.getCoordinates();
-                // frame.drawPanel.moveIt(motorisedVehicle, coordinates.x, coordinates.y);
             }
             
             frame.drawPanel.repaint(); // repaint() calls the paintComponent method of the panel

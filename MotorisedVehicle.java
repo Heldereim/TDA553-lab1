@@ -105,6 +105,10 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
         this.coordinates = coordinates;
     }
 
+    public void setImage(BufferedImage image){
+        this.image = image;
+    }
+
     // ------------------------------------- Handle speed
     // ----------------------------------------//
     public double speedFactor() {
@@ -119,10 +123,6 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
         this.setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount, 0)); // comparing getCurrentSpeed() -
                                                                                        // speedFactor() * amount with 0
     }
-
-    // TODO Detta är en förbättrad version av gas, som tar hand om eventuella
-    // errors/outside range fall först enligt
-    // https://www.geeksforgeeks.org/writing-clean-else-statements/
 
     public void gas(double amount) {
         if (!this.engineOn) {
@@ -157,15 +157,6 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
 
         this.decrementSpeed(amount); // Räcker med denna, om den skulle vara < 0 eller
                                      // > 1 hade ovan if-statements fångat det.
-        
-       /* // Tidigare: 
-        if (amount >= 0 && amount <= 1) {
-            this.decrementSpeed(amount);
-        } else if (amount > 1) {
-            this.decrementSpeed(1);
-        } else {
-            this.decrementSpeed(0);
-        } */
     }
 
     // ------------------------------------- Direction and movement

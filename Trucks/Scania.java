@@ -1,6 +1,5 @@
 import java.awt.*;
 import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.File;
 
@@ -8,13 +7,11 @@ public class Scania extends Truck{
     
    private TipPlatform tipPlatform;
 
-   private BufferedImage image;
-
    public Scania() {
       super(new Engine(90), new Body("Scania", Color.WHITE, 2));
       this.tipPlatform = new TipPlatform();
       try {
-            this.image = ImageIO.read(new File("Assets/Scania.jpg"));
+            this.setImage(ImageIO.read(new File("Assets/Scania.jpg")));
         } catch (IOException e) {
             e.printStackTrace();
         }

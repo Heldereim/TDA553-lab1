@@ -1,17 +1,15 @@
 import java.awt.*;
 import java.io.File;
-import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 
 public class Saab95 extends Car<TurboEngine, Body> {
 
-    private BufferedImage image;
     
     public Saab95(){
         super(new TurboEngine(100.0), new Body("Saab95", Color.gray, 2));
         try {
-            this.image = ImageIO.read(new File("Assets/Saab95.jpg"));
+            this.setImage(ImageIO.read(new File("Assets/Saab95.jpg")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -20,7 +18,7 @@ public class Saab95 extends Car<TurboEngine, Body> {
     public Saab95(TurboEngine engine, Body body){
         super(engine, body);
         try {
-            this.image = ImageIO.read(new File("Assets/Saab95.jpg"));
+            this.setImage(ImageIO.read(new File("Assets/Saab95.jpg")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -29,7 +27,7 @@ public class Saab95 extends Car<TurboEngine, Body> {
     public Saab95(double enginePower, String modelName, Color color, int nrDoors) {
         super(new TurboEngine(enginePower), new Body(modelName, color, nrDoors));
         try {
-            this.image = ImageIO.read(new File("Assets/Saab95.jpg"));
+            this.setImage(ImageIO.read(new File("Assets/Saab95.jpg")));
         } catch (IOException e) {
             e.printStackTrace();
         }
