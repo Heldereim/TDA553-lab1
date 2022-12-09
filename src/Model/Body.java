@@ -55,6 +55,4 @@ public class Body {
     public String toString() {
         return "Body [modelName=" + modelName + ", color=" + color + "]";
     }
-
-
 }
