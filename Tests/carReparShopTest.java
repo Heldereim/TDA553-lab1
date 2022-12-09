@@ -2,6 +2,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
 import java.awt.Color;
+import java.util.EmptyStackException;
 
 import org.junit.Test;
 import src.Model.*;
@@ -46,7 +47,7 @@ public class carReparShopTest {
         assertEquals(2.0, testVolvo.getCoordinates().x, 0.001);
         assertEquals(2.0, testVolvo.getCoordinates().y, 0.001);
 
-        assertThrows(IllegalStateException.class, () -> myShop.unload(testVolvo));
+        assertThrows(EmptyStackException.class, () -> myShop.unload(testVolvo));
     }
 
     @Test

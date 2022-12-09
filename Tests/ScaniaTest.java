@@ -14,7 +14,7 @@ public class ScaniaTest {
         Scania testScania = new Scania();
         assertEquals("Scania", testScania.getModelName());
         assertEquals(Color.WHITE, testScania.getColor());
-        assertEquals(90.0, testScania.getEnginePower(), 0.001);
+        assertEquals(100.0, testScania.getEnginePower(), 0.001);
         assertEquals(2, testScania.getNrDoors());
         assertEquals(0.0, testScania.getCurrentSpeed(), 0.001);
     }

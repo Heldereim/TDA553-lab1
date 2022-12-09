@@ -1,27 +1,23 @@
 package src.Model;
 
-import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.awt.Point;
 
 public class CarRepairShop {
     private Point coordinates;
 
-    private int maxCapacity;
-
     private final double LOAD_RANGE = 5.0;
 
-    private ArrayList<Car<?, ?>> repairshopGarage;
+    private CarStorage repairshopGarage;
 
     public CarRepairShop(double x, double y, int maxCapacity) { 
         this.coordinates = new Point((int) x, (int) y);
-        this.maxCapacity = maxCapacity;
-        this.repairshopGarage = new ArrayList<Car<?, ?>>();
+        this.repairshopGarage = new CarStorage(maxCapacity);
     }
 
     public CarRepairShop(Point coordinates, int maxCapacity) {
         this.coordinates = coordinates;
-        this.maxCapacity = maxCapacity;
-        this.repairshopGarage = new ArrayList<Car<?, ?>>();
+        this.repairshopGarage = new CarStorage(maxCapacity);
     }
 
 
@@ -33,7 +29,7 @@ public class CarRepairShop {
     }
 
         public double getMaxCapacity(){
-        return this.maxCapacity;
+        return repairshopGarage.getMaxCapacity();
     }
 
     //--------------------Setters--------------------------------
@@ -55,7 +51,7 @@ public class CarRepairShop {
         this.AssertInRange(transCar.getCoordinates());
 
         for (int i = 0; i < amountToLoad; i++) {
-            this.repairshopGarage.add(transCar.unload());
+            this.repairshopGarage.load(transCar.unload());
         }
     }
 
@@ -66,7 +62,7 @@ public class CarRepairShop {
     }
 
     private void AssertCapacityLeft (CarTransporter transCar, int amountToLoad) throws IllegalArgumentException {
-        if (amountToLoad > this.maxCapacity - this.repairshopGarage.size()) {
+        if (amountToLoad > this.getMaxCapacity() - this.repairshopGarage.size()) {
             throw new IllegalArgumentException("Can't unload that many vehicles into garage."); 
         }
     }
@@ -75,25 +71,24 @@ public class CarRepairShop {
         this.AssertInRange(transCar.getCoordinates());
 
         if (!this.isFull()) {
-            this.repairshopGarage.add(transCar.unload());
+            this.repairshopGarage.load(transCar.unload());
         } else {
             throw new IllegalStateException("Car Repair Shop already at full capacity");
         }
     }
 
     public void unload(Car<?, ?> car) {
-        if (!this.repairshopGarage.isEmpty()) {
-            this.repairshopGarage.remove(car);
-            this.carToRepairShopPos(car);
+        if (this.repairshopGarage.isEmpty()) {
+            throw new EmptyStackException();
         }
-        else {
-            throw new IllegalStateException();
-        }
+
+        this.repairshopGarage.unload(car);
+        this.carToRepairShopPos(car);
     }
 
     private void tryToLoad(Car<?, ?> car) {
     if (!this.isFull()) {
-            this.repairshopGarage.add(car);
+            this.repairshopGarage.load(car);
             this.carToRepairShopPos(car);
         } else {
             throw new IllegalStateException("Car Repair Shop already at full capacity");
@@ -101,7 +96,7 @@ public class CarRepairShop {
     }
     
     private boolean isFull() {
-        return this.repairshopGarage.size() >= this.maxCapacity;
+        return this.repairshopGarage.size() >= this.getMaxCapacity();
     }
 
     @Override
