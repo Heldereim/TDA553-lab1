@@ -79,55 +79,7 @@ public class CarController {
     }
 
     // Calls the gas method for each car once
-    void gas(int amount) {
-        
-    }
-
-    public void brake(int brakeamount) {
-        double brake = ((double) brakeamount) / 100;
-        for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
-
-            motorisedVehicle.brake(brake);
-        }
-    }
-
-    public void setTurboOff() {
-
-    }
-
-    public void setTurboOn() {
-        System.out.println("TurboON");
-        for (Saab95 saab : saabList) {
-            saab.setTurboOn();
-        }
-    }
-
-    public void raisePlatform(int liftAmount) {
-        for (Scania scania : scaniaList) {
-            scania.raisePlatform(liftAmount);
-        }
-    }
-
-    public void lowerPlatform(int lowerAmount) {
-        for (Scania scania : scaniaList) {
-            scania.lowerPlatform(lowerAmount);
-        }
-    }
-
-    public void startEngine() {
-        System.out.println("StartEngine");
-        for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
-            motorisedVehicle.startEngine();
-        }
-    }
-
-    public void stopEngine() {
-        System.out.println("StopEngine");
-        for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
-            motorisedVehicle.stopEngine();
-        }
-    }
-
+   
     frame.gasButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
