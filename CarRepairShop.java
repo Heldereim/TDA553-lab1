@@ -44,11 +44,6 @@ public class CarRepairShop {
 
     //-------------------Repairshop misc-------------------------
 
-    public void load(LoadableVehicle car) {
-        this.AssertInRange(car.getX(), car.getY());
-        this.tryToLoad(car);
-    }
-
     public void carTransfer(CarTransporter transCar, int amountToLoad) {
         
         this.AssertCapacityLeft(transCar, amountToLoad);
@@ -76,24 +71,6 @@ public class CarRepairShop {
 
         if (!this.isFull()) {
             this.repairshopGarage.add(transCar.unload());
-        } else {
-            throw new IllegalStateException("Car Repair Shop already at full capacity");
-        }
-    }
-
-    public void unload(LoadableVehicle car) {
-        if(this.numberOfCars() > 0) {
-            this.repairshopGarage.remove(car);
-            this.carToRepairShopPos(car);
-        } else {
-            throw new IllegalStateException("Cannot unload, Carrepairshop is empty!");
-        }
-    }
-
-    private void tryToLoad(LoadableVehicle car) {
-    if (!this.isFull()) {
-            this.repairshopGarage.add(car);
-            this.carToRepairShopPos(car);
         } else {
             throw new IllegalStateException("Car Repair Shop already at full capacity");
         }
