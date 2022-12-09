@@ -50,7 +50,7 @@ public class carReparShopTest {
     @Test
     public void loadTestRange() {
         Volvo240 testVolvo = new Volvo240(new Engine(100.0), new TrimBody("Volvo", Color.black, 4, 1.25));
-        CarRepairShop myShop = new CarRepairShop(10, 10, 2);
+        CarRepairShop myShop = new CarRepairShop(10, 10, 0);
 
         assertThrows(IllegalStateException.class, () -> myShop.load(testVolvo));
     }

@@ -1,29 +1,22 @@
 import java.awt.*;
-import java.util.Stack;
 
 public class CarTransporter extends Truck {
 
     private CarPlatform carPlatform;
-    private Stack<Car<?, ?>> loadedVehicles;
-    private int maxCapacity;
+    private CarStorage loadedVehicles;
 
     public CarTransporter(int maxCapacity) {
         super(new Engine(120), new Body("Transporter", Color.black, 2));
         this.carPlatform = new CarPlatform();
-        this.maxCapacity = maxCapacity;
-        this.loadedVehicles = new Stack<Car<?, ?>>();
+        this.loadedVehicles = new CarStorage(maxCapacity);
     }
 
     public void load(Car<?, ?> car) {
-        if (this.carPlatform.isPlatformDown()) {
-            this.tryToLoad(car);
-        } else {
-            throw new IllegalStateException("Cannot load if platform isn't down.");
-        }
+        loadedVehicles.load(car);
     }
 
     public Car<?, ?> unload() {
-        return this.loadedVehicles.pop(); // Will throw exception if loadedVehicles is empty
+        return loadedVehicles.unload();
     }
 
     public void raisePlatform() {
@@ -45,20 +38,12 @@ public class CarTransporter extends Truck {
         }
     }
 
-    private void tryToLoad(Car<?, ?> car) {
-        if (this.loadedVehicles.size() < this.maxCapacity) {
-            this.loadedVehicles.push(car);
-        } else {
-            throw new IllegalStateException("Car Transporter already at full capacity");
-        }
-    }
-
     public boolean isPlatformDown() {
         return this.carPlatform.isPlatformDown();
     }
 
     public Car<?, ?> lookTopCar() {
-        return this.loadedVehicles.peek();
+        return this.loadedVehicles.get(loadedVehicles.size() - 1);
     }
 
     @Override
