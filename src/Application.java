@@ -1,5 +1,12 @@
+package src;
 import java.awt.Point;
 import javax.swing.*;
+
+import src.Model.CarFactory;
+import src.Model.MotorisedVehicle;
+import src.Controller.CarController;
+import src.View.CarView;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,7 +22,9 @@ public class Application {
     
     public static void main(String[] args) {
         
-        CarController cc = new CarController();
+        frame = new CarView("CarSim 1.0");
+        
+        CarController cc = new CarController(frame);
         
         cc.instantiateActions();
 
@@ -30,9 +39,6 @@ public class Application {
             i++;
         }
 
-        // Start a new view and send a reference of self
-        frame = cc.carview;
-
         // Start the timer
         timer.start();
     }
@@ -43,7 +49,7 @@ public class Application {
             for (MotorisedVehicle<?, ?> motorisedVehicle : CarFactory.getAllVehicles()) {
                 motorisedVehicle.move();
             }
-            frame.drawPanel.repaint(); // repaint() calls the paintComponent method of the panel
+            frame.repaint(); // repaint() calls the paintComponent method of the panel
         }
     }
 }

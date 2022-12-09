@@ -1,3 +1,5 @@
+package src.Model;
+
 public abstract class Truck extends MotorisedVehicle<Engine, Body>{
     
     public Truck(Engine engine, Body body){

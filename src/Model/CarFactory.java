@@ -1,3 +1,5 @@
+package src.Model;
+
 import java.util.*;
 import java.awt.Color;
 

@@ -1,3 +1,5 @@
+package src.Model;
+
 import java.awt.*;
 import java.lang.Math;
 import java.awt.image.BufferedImage;

@@ -1,3 +1,5 @@
+package src.Model;
+
 import java.awt.*;
 import javax.imageio.ImageIO;
 import java.io.IOException;

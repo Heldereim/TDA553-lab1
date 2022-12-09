@@ -4,6 +4,8 @@ import static org.junit.Assert.assertThrows;
 import java.awt.Color;
 
 import org.junit.Test;
+import src.Model.*;
+
 
 public class carReparShopTest {
     
