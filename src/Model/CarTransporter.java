@@ -18,6 +18,9 @@ public class CarTransporter extends Truck {
     }
 
     public Car<?, ?> unload() {
+        if (this.getCurrentSpeed() != 0) {
+            throw new IllegalStateException();
+        }
         return loadedVehicles.unload();
     }
 
