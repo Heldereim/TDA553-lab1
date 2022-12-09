@@ -14,7 +14,9 @@ to the x and y positions determined by the direction varible.
 The brake method is exactly the same, besides it calls upon decrementSpeed instead of incrementSpeed.
 
 It follows the Liskov Substitution Principle because the implementation does what the contract says and only that. It delegates all
-other operations that the contract doesn't include to other methods.
+other operations that the contract doesn't include to other methods. For example, the contract for the gas method is the following:
+If we give the method a double and the vehicle is ready to move, then the vehicle should move. However, "is ready to move" means may differ
+between different vehicles.
 
 2. How did you handle duplicated code between Scania, the car transporters and the repair shops? Explain how you decided 
 when to use subclassing and when to use composition and delegation.
