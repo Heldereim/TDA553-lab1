@@ -43,6 +43,8 @@ public class carReparShopTest {
 
         assertEquals(2.0, testVolvo.getCoordinates().x, 0.001);
         assertEquals(2.0, testVolvo.getCoordinates().y, 0.001);
+
+        assertThrows(IllegalStateException.class, () -> myShop.unload(testVolvo));
     }
 
     @Test

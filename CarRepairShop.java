@@ -80,8 +80,13 @@ public class CarRepairShop {
     }
 
     public void unload(Car<?, ?> car) {
-        this.repairshopGarage.remove(car);
-        this.carToRepairShopPos(car);
+        if (!this.repairshopGarage.isEmpty()) {
+            this.repairshopGarage.remove(car);
+            this.carToRepairShopPos(car);
+        }
+        else {
+            throw new IllegalStateException();
+        }
     }
 
     private void tryToLoad(Car<?, ?> car) {
