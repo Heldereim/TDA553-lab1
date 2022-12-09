@@ -31,9 +31,7 @@ public class Application {
         }
 
         // Start a new view and send a reference of self
-
-        //frame = cc.carview;
-        frame = new CarView("CarSim 1.0");
+        frame = cc.carview;
 
         // Start the timer
         timer.start();
