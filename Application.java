@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import java.util.ArrayList;
 
 public class Application {
     
@@ -18,13 +17,15 @@ public class Application {
     public static void main(String[] args) {
         
         CarController cc = new CarController();
+        
+        cc.instantiateActions();
 
         CarFactory.makeVolvo();
         CarFactory.makeSaab();
         CarFactory.makeScania();
 
-        int i = 0; // TODO MITT
-        for (MotorisedVehicle<?, ?> motorisedVehicle : CarFactory.getAllVehicles()) { // TODO MITT
+        int i = 0;
+        for (MotorisedVehicle<?, ?> motorisedVehicle : CarFactory.getAllVehicles()) { 
             Point point = new Point(0, (i * Application.INITIAL_DISTANCE));
             motorisedVehicle.setCoordinates(point); // Ökar distansen med 100 mellan varje bil i y-led
             i++;

@@ -11,7 +11,7 @@ public class Volvo240 extends Car<Engine, TrimBody> {
     public Volvo240(){
         super(new Engine(100), new TrimBody("Volvo240", Color.black, 4, 1.25));
         try {
-        this.image = ImageIO.read(new File("TDA553-lab1/Assets/Volvo240.jpg"));
+        this.image = ImageIO.read(new File("Assets/Volvo240.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }

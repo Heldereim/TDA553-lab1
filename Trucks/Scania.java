@@ -14,7 +14,7 @@ public class Scania extends Truck{
       super(new Engine(90), new Body("Scania", Color.WHITE, 2));
       this.tipPlatform = new TipPlatform();
       try {
-            this.image = ImageIO.read(new File("TDA553-lab1/Assets/Scania.jpg"));
+            this.image = ImageIO.read(new File("Assets/Scania.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }
