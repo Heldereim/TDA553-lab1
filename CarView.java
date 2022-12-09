@@ -18,7 +18,6 @@ public class CarView extends JFrame{
     private static final int Y = 800;
 
     // The controller member
-    CarController carC;
     
     DrawPanel drawPanel;
 
@@ -40,9 +39,8 @@ public class CarView extends JFrame{
     JButton stopButton = new JButton("Stop all cars");
 
     // Constructor
-    public CarView(String framename, CarController cc){
-        this.carC = cc;
-        this.drawPanel = new DrawPanel(CarView.X, CarView.Y-240, this.carC.allVehicles);
+    public CarView(String framename){
+        this.drawPanel = new DrawPanel(CarView.X, CarView.Y-240);
         initComponents(framename);
     }
 
@@ -159,9 +157,6 @@ public class CarView extends JFrame{
         // }});
 
 
-
-
-
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
 
@@ -173,5 +168,13 @@ public class CarView extends JFrame{
         this.setVisible(true);
         // Make sure the frame exits when "x" is pressed
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public JButton getGasButton() {
+        return this.gasButton;
+    }
+
+    public int getGasAmount() {
+        return this.gasAmount;
     }
 }

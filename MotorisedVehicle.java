@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.lang.Math;
+import java.awt.image.BufferedImage;
 
 public abstract class MotorisedVehicle<E extends Engine, B extends Body> implements Movable {
 
@@ -7,6 +8,7 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
     private B body;
     private Boolean engineOn;
     private double currentSpeed;
+    private BufferedImage image;
 
     private Point coordinates; // Coordinates
 
@@ -78,6 +80,10 @@ public abstract class MotorisedVehicle<E extends Engine, B extends Body> impleme
 
     public Boolean getEngineOn() {
         return this.engineOn;
+    }
+
+    public BufferedImage getImage() {
+        return this.image;
     }
 
     // -------------------------------------

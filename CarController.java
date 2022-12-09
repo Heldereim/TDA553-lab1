@@ -1,5 +1,4 @@
 import javax.swing.*;
-
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,89 +10,36 @@ import java.util.ArrayList;
 * modifying the model state and the updating the view.
  */
 
-public class CarController {
-    // member fields:
+public class CarController implements ActionListener {
 
-    // The delay (ms) corresponds to 50 updates a sec (hz)
-    private final int DELAY = 50;
+    CarView carview = new CarView("CarSim 1.0");
 
-    // each step between delays.
-    private Timer timer = new Timer(DELAY, new TimerListener());
-
-    // The frame that represents this instance View of the MVC pattern
-    CarView frame;
-    // A list of cars, modify if needed
-    ArrayList<MotorisedVehicle<?, ?>> allVehicles = new ArrayList<>();
-    ArrayList<Saab95> saabList = new ArrayList<>();
-    ArrayList<Scania> scaniaList = new ArrayList<>();
-    
-
-    // methods:
-
-    public static void main(String[] args) {
-        // Instance of this class
-
-        final int INITIAL_DISTANCE = 100; // TODO MITT
-
-        CarController cc = new CarController();
-
-        Volvo240 myVolvo = new Volvo240();
-        Saab95 mySaab = new Saab95();
-        Scania myScania = new Scania();
-
-        cc.allVehicles.add(myVolvo);
-        cc.saabList.add(mySaab); // TODO MITT
-        cc.allVehicles.add(mySaab);
-        cc.scaniaList.add(myScania);
-        cc.allVehicles.add(myScania); // TODO MITT
+    public void instantiateActions(){
 
 
-
-        int i = 0; // TODO MITT
-        for (MotorisedVehicle<?, ?> motorisedVehicle : cc.allVehicles) { // TODO MITT
-            Point point = new Point(0, (i*INITIAL_DISTANCE));
-            motorisedVehicle.setCoordinates(point); // Ökar distansen med 100 mellan varje bil i y-led
-            i++;
-        }
-
-        // Start a new view and send a reference of self
-        cc.frame = new CarView("CarSim 1.0", cc);
-
-        // Start the timer
-        cc.timer.start();
-    }
-
-    /*
-     * Each step the TimerListener moves all the cars in the list and tells the
-     * view to update its images. Change this method to your needs.
-     */
-    private class TimerListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
-                motorisedVehicle.move();
-                // Point coordinates = motorisedVehicle.getCoordinates();
-                // frame.drawPanel.moveIt(motorisedVehicle, coordinates.x, coordinates.y);
-                frame.drawPanel.repaint(); // repaint() calls the paintComponent method of the panel
+        carview.getGasButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (MotorisedVehicle<?, ?> motorisedVehicle : CarFactory.getAllVehicles()) {
+                    motorisedVehicle.gas(carview.getGasAmount()); 
+                }
             }
-        }
+        });
     }
+
+
+    // @Override
+    //     public void actionPerformed(ActionEvent e) {
+    //         double gas = ((double) this.carview.gasAmount) / 100;
+    //         System.out.println("Gas CarController: " + gas);
+    //         for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
+    //             motorisedVehicle.gas(gas);
+    //             }
+    //     });
 
     // Calls the gas method for each car once
-   
-    frame.gasButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            double gas = ((double) frame.gasAmount) / 100;
-            System.out.println("Gas CarController: " + gas);
-            for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
 
-                motorisedVehicle.gas(gas);
-
-            }
-        }
-    });
-
-    frame.brakeButton.addActionListener(new ActionListener() {
+    carview.brakeButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             double brake = 100.00;
@@ -104,7 +50,7 @@ public class CarController {
         }
     }); 
 
-    frame.turboOffButton.addActionListener(new ActionListener() {
+    carview.turboOffButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("TurboOFF");
@@ -114,7 +60,7 @@ public class CarController {
         }
     });
 
-    frame.turboOnButton.addActionListener(new ActionListener() {
+    carview.turboOnButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("TurboON");
@@ -124,7 +70,7 @@ public class CarController {
         }
     });
 
-    frame.liftBedButton.addActionListener(new ActionListener() {
+    this.carview.liftBedButton.addActionListener(new ActionListener() {
         @Override   
         public void actionPerformed(ActionEvent e) {
             for (Scania scania : scaniaList) {
@@ -133,7 +79,7 @@ public class CarController {
         }
     });
 
-    frame.lowerBedButton.addActionListener(new ActionListener()  {
+    this.carview.lowerBedButton.addActionListener(new ActionListener()  {
         @Override
         public void actionPerformed(ActionEvent e) {
             for (Scania scania : scaniaList) {
@@ -142,7 +88,7 @@ public class CarController {
         }
     });
 
-    frame.startButton.addActionListener(new ActionListener() {
+    this.carview.startButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
@@ -151,7 +97,7 @@ public class CarController {
         }
     });
 
-    frame.stopButton.addActionListener(new ActionListener() {
+    this.carview.stopButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             for (MotorisedVehicle<?, ?> motorisedVehicle : allVehicles) {
