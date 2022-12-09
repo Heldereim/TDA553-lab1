@@ -1,3 +1,4 @@
+package src.Model;
 
 public enum Direction { //A list of possible directions
     NORTH(0),

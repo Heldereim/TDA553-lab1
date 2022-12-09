@@ -1,3 +1,4 @@
+package src.Model;
 
 public class TurboEngine extends Engine{
     private boolean turboOn;

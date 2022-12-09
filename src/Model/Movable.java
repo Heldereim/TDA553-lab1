@@ -1,3 +1,5 @@
+package src.Model;
+
 interface Movable {
     
     void move();

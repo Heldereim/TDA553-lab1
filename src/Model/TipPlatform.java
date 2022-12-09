@@ -1,3 +1,5 @@
+package src.Model;
+
 public class TipPlatform {
 
     // ------------------------------------- Variables

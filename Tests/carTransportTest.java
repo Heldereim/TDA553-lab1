@@ -2,6 +2,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.awt.Color;
 
+import src.Model.*;
+
 import org.junit.Test;
 
 public class carTransportTest {

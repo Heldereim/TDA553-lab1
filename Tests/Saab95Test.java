@@ -1,4 +1,5 @@
 import static org.junit.Assert.assertEquals;
+import src.Model.*;
 
 import java.awt.Color;
 
