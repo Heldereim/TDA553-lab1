@@ -14,17 +14,6 @@ public class CarTransporter extends Truck {
         this.loadedVehicles = new Stack<LoadableVehicle>();
     }
 
-    public void load(LoadableVehicle car) {
-        if (this.carPlatform.isPlatformDown()) {
-            this.tryToLoad(car);
-        } else {
-            throw new IllegalStateException("Cannot load if platform isn't down.");
-        }
-    }
-
-    public LoadableVehicle unload() {
-        return this.loadedVehicles.pop(); // Will throw exception if loadedVehicles is empty
-    }
 
     public void raisePlatform() {
         this.carPlatform.raisePlatform();
@@ -42,15 +31,6 @@ public class CarTransporter extends Truck {
                 loadedVehicles.get(i).setX(this.getX());
                 loadedVehicles.get(i).setY(this.getY());
             }
-        }
-    }
-
-    private void tryToLoad(LoadableVehicle car) {
-
-        if (this.loadedVehicles.size() < this.maxCapacity) {
-            this.loadedVehicles.push(car);
-        } else {
-            throw new IllegalStateException("Car Transporter already at full capacity");
         }
     }
 

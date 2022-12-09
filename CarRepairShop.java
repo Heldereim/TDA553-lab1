@@ -1,3 +1,4 @@
+import java.lang.reflect.Executable;
 import java.util.ArrayList;
 
 public class CarRepairShop {
@@ -81,8 +82,12 @@ public class CarRepairShop {
     }
 
     public void unload(LoadableVehicle car) {
-        this.repairshopGarage.remove(car);
-        this.carToRepairShopPos(car);
+        if(this.numberOfCars() > 0) {
+            this.repairshopGarage.remove(car);
+            this.carToRepairShopPos(car);
+        } else {
+            throw new IllegalStateException("Cannot unload, Carrepairshop is empty!");
+        }
     }
 
     private void tryToLoad(LoadableVehicle car) {
@@ -96,6 +101,10 @@ public class CarRepairShop {
     
     private boolean isFull() {
         return this.repairshopGarage.size() >= this.maxCapacity;
+    }
+
+    private int numberOfCars() {
+        return repairshopGarage.size();
     }
 
     @Override
