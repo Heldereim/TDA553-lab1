@@ -1,6 +1,5 @@
 import java.awt.Point;
 import javax.swing.*;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -32,18 +31,20 @@ public class Application {
         }
 
         // Start a new view and send a reference of self
-        frame = cc.carview;
+
+        //frame = cc.carview;
+        frame = new CarView("CarSim 1.0");
 
         // Start the timer
         timer.start();
     }
 
     private static class TimerListener implements ActionListener {
+
         public void actionPerformed(ActionEvent e) {
             for (MotorisedVehicle<?, ?> motorisedVehicle : CarFactory.getAllVehicles()) {
                 motorisedVehicle.move();
             }
-            
             frame.drawPanel.repaint(); // repaint() calls the paintComponent method of the panel
         }
     }
