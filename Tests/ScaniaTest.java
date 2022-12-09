@@ -14,7 +14,7 @@ public class ScaniaTest {
         Scania testScania = new Scania();
         assertEquals("Scania", testScania.getModelName());
         assertEquals(Color.WHITE, testScania.getColor());
-        assertEquals(150.0, testScania.getEnginePower(), 0.001);
+        assertEquals(90.0, testScania.getEnginePower(), 0.001);
         assertEquals(2, testScania.getNrDoors());
         assertEquals(0.0, testScania.getCurrentSpeed(), 0.001);
     }
@@ -34,14 +34,15 @@ public class ScaniaTest {
     @Test
     public void testPlatformWhileMoving(){
         Scania testScania = new Scania();
-        testScania.gas(0.7);
-        assertEquals(1.05, testScania.getCurrentSpeed(), 0.001);
+        testScania.startEngine();
+        testScania.gas(1);
+        assertEquals(1, testScania.getCurrentSpeed(), 0.001);
         
         assertThrows(IllegalStateException.class, () -> testScania.raisePlatform(20));
         testScania.move();
-        assertEquals(1.05, testScania.getCoordinates().y, 0.001);
+        assertEquals(0.0, testScania.getCoordinates().y, 0.001);
         testScania.turnLeft();
         testScania.move();
-        assertEquals(-1.05, testScania.getCoordinates().x, 0.001);
+        assertEquals(1.0, testScania.getCoordinates().x, 0.001);
     }
 }

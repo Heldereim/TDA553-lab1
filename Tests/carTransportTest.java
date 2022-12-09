@@ -49,6 +49,8 @@ public class carTransportTest {
 
         carTransporter.raisePlatform();
 
+        carTransporter.startEngine();
+
         carTransporter.gas(0.5);
         carTransporter.move();
         carTransporter.turnLeft();

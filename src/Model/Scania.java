@@ -10,7 +10,7 @@ public class Scania extends Truck{
    private TipPlatform tipPlatform;
 
    public Scania() {
-      super(new Engine(90), new Body("Scania", Color.WHITE, 2));
+      super(new Engine(100), new Body("Scania", Color.WHITE, 2));
       this.tipPlatform = new TipPlatform();
       try {
             this.setImage(ImageIO.read(new File("Assets/Scania.jpg")));
