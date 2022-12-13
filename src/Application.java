@@ -12,6 +12,8 @@ import java.awt.event.ActionListener;
 
 
 public class Application {
+    private static final int X = 800;
+    private static final int Y = 800;
     
     private final static int INITIAL_DISTANCE = 100;
     private static final int DELAY = 50;
@@ -21,10 +23,8 @@ public class Application {
     private static CarView frame;
     
     public static void main(String[] args) {
-                
-        CarController cc = new CarController();
-
-        frame = cc.getCarView(); //TODO temporär lösning
+        frame = new CarView("Carsim 1.0", X, Y);
+        CarController cc = new CarController(frame, X, Y);
         
         cc.instantiateActionsAndComponents();
 

@@ -19,6 +19,10 @@ import src.Model.*;
  */
 
 public class CarController { 
+
+    private int X;
+    private int Y;
+
     CarView carview;
     JPanel controlPanel = new JPanel();
 
@@ -37,8 +41,10 @@ public class CarController {
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
 
-    public CarController() {
-        this.carview = new CarView("Carsim 1.0", controlPanel);
+    public CarController(CarView cw, int X, int Y) {
+        this.carview = cw;
+        this.X = X;
+        this.Y = Y;
     }
 
 
@@ -62,6 +68,10 @@ public class CarController {
         controlPanel.add(brakeButton, 3);
         controlPanel.add(turboOffButton, 4);
         controlPanel.add(lowerBedButton, 5);
+        controlPanel.setLayout(new GridLayout(2,4));
+        controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
+        controlPanel.setBackground(Color.CYAN);
+        addComponent(controlPanel);
 
         gasPanel.setLayout(new BorderLayout());
         gasPanel.add(gasLabel, BorderLayout.PAGE_START);

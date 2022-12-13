@@ -12,19 +12,17 @@ import java.awt.*;
  **/
 
 public class CarView extends JFrame{
-    private static final int X = 800;
-    private static final int Y = 800;
 
-    // The controller member
+    private int X;
+    private int Y;
     
     DrawPanel drawPanel;
 
-    JPanel controlPanel;
-
     // Constructor
-    public CarView(String framename, JPanel controlPanel){
-        this.drawPanel = new DrawPanel(CarView.X, CarView.Y-240);
-        this.controlPanel = controlPanel;
+    public CarView(String framename, int X, int Y){
+        this.drawPanel = new DrawPanel(X, Y-240);
+        this.X = X;
+        this.Y = Y;
         initComponents(framename);
     }
 
@@ -36,14 +34,7 @@ public class CarView extends JFrame{
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         this.add(drawPanel);
-
-        controlPanel.setLayout(new GridLayout(2,4));
-
         
-        this.add(controlPanel);
-        controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
-        controlPanel.setBackground(Color.CYAN);
-
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
 
