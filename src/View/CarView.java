@@ -1,8 +1,6 @@
 package src.View;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import java.awt.*;
 
@@ -39,26 +37,12 @@ public class CarView extends JFrame{
 
         this.add(drawPanel);
 
-        this.add(gasPanel); // TODO send gaspanel from cc?
-
         controlPanel.setLayout(new GridLayout(2,4));
 
         
         this.add(controlPanel);
         controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
         controlPanel.setBackground(Color.CYAN);
-
-
-        startButton.setBackground(Color.blue);
-        startButton.setForeground(Color.green);
-        startButton.setPreferredSize(new Dimension(X/5-15,200));
-        this.add(startButton);
-
-
-        stopButton.setBackground(Color.red);
-        stopButton.setForeground(Color.black);
-        stopButton.setPreferredSize(new Dimension(X/5-15,200));
-        this.add(stopButton);
 
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();

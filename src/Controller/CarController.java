@@ -67,16 +67,28 @@ public class CarController {
         gasPanel.add(gasLabel, BorderLayout.PAGE_START);
         gasPanel.add(gasSpinner, BorderLayout.PAGE_END);
 
-        carview.getGasButton().addActionListener(new ActionListener() {
+        addComponent(gasPanel);
+
+        startButton.setBackground(Color.blue);
+        startButton.setForeground(Color.green);
+        startButton.setPreferredSize(new Dimension(X/5-15,200));
+        this.addButton(startButton);
+
+        stopButton.setBackground(Color.red);
+        stopButton.setForeground(Color.black);
+        stopButton.setPreferredSize(new Dimension(X/5-15,200));
+        this.addButton(stopButton);
+
+        gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (MotorisedVehicle<?, ?> motorisedVehicle : CarFactory.getAllVehicles()) {
-                    motorisedVehicle.gas(carview.getGasAmount()); 
+                    motorisedVehicle.gas(gasAmount); 
                 }
             }
         });
 
-        carview.getBrakeButton().addActionListener(new ActionListener() {
+         brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 double brakeAmount = 100;
@@ -86,7 +98,7 @@ public class CarController {
             }
         });
 
-        carview.getTurboOnButton().addActionListener(new ActionListener() {
+       turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (Saab95 saab : CarFactory.getSaabList()) {
@@ -95,7 +107,7 @@ public class CarController {
             }
         });
 
-        carview.getTurboOffButton().addActionListener(new ActionListener() {
+        turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (Saab95 saab : CarFactory.getSaabList()) {
@@ -104,7 +116,7 @@ public class CarController {
             }
         });
 
-        carview.getLiftBedButton().addActionListener(new ActionListener() {
+        liftBedButton.addActionListener(new ActionListener() {
             @Override   
             public void actionPerformed(ActionEvent e) {
                 for (Scania scania : CarFactory.getScaniaList()) {
@@ -113,7 +125,7 @@ public class CarController {
             }
         });
 
-        carview.getLowerBedButton().addActionListener(new ActionListener() {
+        lowerBedButton.addActionListener(new ActionListener() {
             @Override   
             public void actionPerformed(ActionEvent e) {
                 for (Scania scania : CarFactory.getScaniaList()) {
@@ -122,7 +134,7 @@ public class CarController {
             }
         });
 
-        carview.getStartButton().addActionListener(new ActionListener() {
+        startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (MotorisedVehicle<?, ?> motorisedVehicle : CarFactory.getAllVehicles()) {
@@ -131,7 +143,7 @@ public class CarController {
             }
         });
 
-        carview.getStopButton().addActionListener(new ActionListener() {
+        stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (MotorisedVehicle<?, ?> motorisedVehicle : CarFactory.getAllVehicles()) {
@@ -143,5 +155,13 @@ public class CarController {
 
     public CarView getCarView(){
         return this.carview;
+    }
+
+    public void addComponent(Component comp){
+        carview.add(comp);
+    }
+
+    public void addButton(JButton button){
+        carview.add(button);
     }
 }
