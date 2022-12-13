@@ -14,11 +14,14 @@ public class CarTransporter extends Truck {
     }
 
     public void load(Car<?, ?> car) {
+        if (this.getCurrentSpeed() != 0  || !this.isPlatformDown()) {
+            throw new IllegalStateException();
+        }
         loadedVehicles.load(car);
     }
 
     public Car<?, ?> unload() {
-        if (this.getCurrentSpeed() != 0) {
+        if (this.getCurrentSpeed() != 0 || !this.isPlatformDown()) {
             throw new IllegalStateException();
         }
         return loadedVehicles.unload();
