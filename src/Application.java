@@ -23,8 +23,10 @@ public class Application {
     private static CarView frame;
     
     public static void main(String[] args) {
-        frame = new CarView("Carsim 1.0", X, Y);
+        frame = new CarView(X, Y);
         CarController cc = new CarController(frame, X, Y);
+        
+        frame.initComponents("CarSim 1.0");
         
         cc.instantiateActionsAndComponents();
 

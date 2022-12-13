@@ -15,19 +15,18 @@ public class CarView extends JFrame{
 
     private int X;
     private int Y;
-    
+
     DrawPanel drawPanel;
 
     // Constructor
-    public CarView(String framename, int X, int Y){
+    public CarView(int X, int Y){
         this.drawPanel = new DrawPanel(X, Y-240);
         this.X = X;
         this.Y = Y;
-        initComponents(framename);
     }
 
     // Sets everything in place and fits everything
-    private void initComponents(String title) {
+    public void initComponents(String title) {
 
         this.setTitle(title);
         this.setPreferredSize(new Dimension(X,Y));
@@ -51,5 +50,4 @@ public class CarView extends JFrame{
     public void repaint() {
         this.drawPanel.repaint();
     }
-
 }

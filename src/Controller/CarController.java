@@ -71,6 +71,7 @@ public class CarController {
         controlPanel.setLayout(new GridLayout(2,4));
         controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
         controlPanel.setBackground(Color.CYAN);
+        
         addComponent(controlPanel);
 
         gasPanel.setLayout(new BorderLayout());
