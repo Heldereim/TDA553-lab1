@@ -21,26 +21,12 @@ public class CarView extends JFrame{
     
     DrawPanel drawPanel;
 
-    JPanel controlPanel = new JPanel();
-
-    JPanel gasPanel = new JPanel();
-    JSpinner gasSpinner = new JSpinner();
-    int gasAmount = 0;
-    JLabel gasLabel = new JLabel("Amount of gas");
-
-    JButton gasButton = new JButton("Gas");
-    JButton brakeButton = new JButton("Brake");
-    JButton turboOnButton = new JButton("Saab Turbo on");
-    JButton turboOffButton = new JButton("Saab Turbo off");
-    JButton liftBedButton = new JButton("Scania Lift Bed");
-    JButton lowerBedButton = new JButton("Lower Lift Bed");
-
-    JButton startButton = new JButton("Start all cars");
-    JButton stopButton = new JButton("Stop all cars");
+    JPanel controlPanel;
 
     // Constructor
-    public CarView(String framename){
+    public CarView(String framename, JPanel controlPanel){
         this.drawPanel = new DrawPanel(CarView.X, CarView.Y-240);
+        this.controlPanel = controlPanel;
         initComponents(framename);
     }
 
@@ -53,34 +39,13 @@ public class CarView extends JFrame{
 
         this.add(drawPanel);
 
-        SpinnerModel spinnerModel =
-                new SpinnerNumberModel(0, //initial value
-                        0, //min
-                        100, //max
-                        1);//step
-        gasSpinner = new JSpinner(spinnerModel);
-        gasSpinner.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
-                gasAmount = (int) ((JSpinner)e.getSource()).getValue();
-            }
-        });
-
-        gasPanel.setLayout(new BorderLayout());
-        gasPanel.add(gasLabel, BorderLayout.PAGE_START);
-        gasPanel.add(gasSpinner, BorderLayout.PAGE_END);
-
-        this.add(gasPanel);
+        this.add(gasPanel); // TODO send gaspanel from cc?
 
         controlPanel.setLayout(new GridLayout(2,4));
 
-        controlPanel.add(gasButton, 0);
-        controlPanel.add(turboOnButton, 1);
-        controlPanel.add(liftBedButton, 2);
-        controlPanel.add(brakeButton, 3);
-        controlPanel.add(turboOffButton, 4);
-        controlPanel.add(lowerBedButton, 5);
-        controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
+        
         this.add(controlPanel);
+        controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
         controlPanel.setBackground(Color.CYAN);
 
 
@@ -108,43 +73,8 @@ public class CarView extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public JButton getGasButton() {
-        return this.gasButton;
-    }
-
-    public JButton getBrakeButton() {
-        return this.brakeButton;
-    }
-
-    public JButton getTurboOnButton() {
-        return turboOnButton;
-    }
-
-    public JButton getTurboOffButton() {
-        return turboOffButton;
-    }
-
-    public JButton getLiftBedButton() {
-        return liftBedButton;
-    }
-
-    public JButton getLowerBedButton() {
-        return lowerBedButton;
-    }
-
-    public JButton getStartButton() {
-        return startButton;
-    }
-
-    public JButton getStopButton() {
-        return stopButton;
-    }
-
-    public int getGasAmount() {
-        return this.gasAmount;
-    }
-
     public void repaint() {
         this.drawPanel.repaint();
     }
+
 }

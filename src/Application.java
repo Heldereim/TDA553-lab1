@@ -21,12 +21,12 @@ public class Application {
     private static CarView frame;
     
     public static void main(String[] args) {
+                
+        CarController cc = new CarController();
+
+        frame = cc.getCarView(); //TODO temporär lösning
         
-        frame = new CarView("CarSim 1.0");
-        
-        CarController cc = new CarController(frame);
-        
-        cc.instantiateActions();
+        cc.instantiateActionsAndComponents();
 
         CarFactory.makeVolvo();
         CarFactory.makeSaab();
