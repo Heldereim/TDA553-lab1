@@ -25,7 +25,7 @@ public class carTransportTest {
     @Test
     public void loadCarTest() {
         CarTransporter carTransporter = new CarTransporter(2);
-        Saab95 mySaab95 = new Saab95(new TurboEngine(125.0), new Body("Saab85", Color.black, 4));
+        Saab95 mySaab95 = new Saab95();
         Volvo240 myVolvo = new Volvo240(new Engine(100), new TrimBody("Volvo", Color.black, 4, 1.25));
 
         carTransporter.lowerPlatform();
@@ -39,7 +39,7 @@ public class carTransportTest {
     @Test
     public void moveCarTransport() {
         CarTransporter carTransporter = new CarTransporter(2);
-        Saab95 mySaab95 = new Saab95(new TurboEngine(100.0), new Body("Saab95", Color.red, 4));
+        Saab95 mySaab95 = new Saab95();
         Volvo240 myVolvo = new Volvo240(new Engine(100), new TrimBody("Volvo", Color.black, 4, 1.25));
 
         carTransporter.lowerPlatform();

@@ -22,8 +22,8 @@ public class carReparShopTest {
     @Test
     public void loadTest(){
         Volvo240 testVolvo = new Volvo240(new Engine(100.0), new TrimBody("Volvo", Color.black, 4, 1.25));
-        Saab95 testSaab1 = new Saab95(new TurboEngine(100.0), new Body("Saab", Color.white, 4));
-        Saab95 testSaab2 = new Saab95(new TurboEngine(100.0), new Body("Saab", Color.green, 4));
+        Saab95 testSaab1 = new Saab95();
+        Saab95 testSaab2 = new Saab95();
 
         CarRepairShop myShop = new CarRepairShop(1, 1, 2);
 

@@ -90,6 +90,9 @@ public class CarController {
         stopButton.setPreferredSize(new Dimension(X/5-15,200));
         this.addButton(stopButton);
 
+        // Make the frame pack all it's components by respecting the sizes if possible.
+        carview.pack();
+
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

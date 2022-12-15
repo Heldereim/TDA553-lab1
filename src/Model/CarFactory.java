@@ -20,7 +20,7 @@ public abstract class CarFactory {
     }
 
     public static void makeSaab(TurboEngine engine, Body body) {
-        Saab95 saab = new Saab95(engine, body);
+        Saab95 saab = new Saab95();
         allVehicles.add(saab);
         saabList.add(saab);
     }

@@ -34,8 +34,7 @@ public class CarView extends JFrame{
 
         this.add(drawPanel);
         
-        // Make the frame pack all it's components by respecting the sizes if possible.
-        this.pack();
+
 
         // Get the computer screen resolution
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
