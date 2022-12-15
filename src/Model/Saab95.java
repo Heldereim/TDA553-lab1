@@ -7,45 +7,36 @@ import java.io.IOException;
 
 public class Saab95 extends Car<TurboEngine, Body> {
 
-    
+    private final TurboEngine engine;
+
     public Saab95(){
-        super(new TurboEngine(100.0), new Body("Saab95", Color.gray, 2));
-        try {
-            this.setImage(ImageIO.read(new File("Assets/Saab95.jpg")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        this(new TurboEngine(100.0), new Body("Saab95", Color.gray, 2));
     }
 
-    public Saab95(TurboEngine engine, Body body){
+    private Saab95(TurboEngine engine, Body body){
         super(engine, body);
         try {
             this.setImage(ImageIO.read(new File("Assets/Saab95.jpg")));
         } catch (IOException e) {
             e.printStackTrace();
         }
+        this.engine = engine;
     }
 
     public Saab95(double enginePower, String modelName, Color color, int nrDoors) {
-        super(new TurboEngine(enginePower), new Body(modelName, color, nrDoors));
-        try {
-            this.setImage(ImageIO.read(new File("Assets/Saab95.jpg")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        this(new TurboEngine(enginePower), new Body(modelName, color, nrDoors));
     }
     
     public void setTurboOn(){
-	    this.getEngine().turnOnTurbo();
-        this.getEngine();
+	    engine.turnOnTurbo();
     }
 
     public void setTurboOff(){
-	    this.getEngine().turnOffTurbo();
+	    engine.turnOffTurbo();
     }
 
     public boolean isTurboOn(){
-        return this.getEngine().isTurboOn();
+        return engine.isTurboOn();
     }
 
     @Override
